@@ -1,0 +1,4457 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f3eb"><meta name="description" content="最后一笔，滑动涂色益智游戏。"><title>最后一笔</title><style>:root{--paper:#f5f3eb;--ink:#293b35;--muted:#89918a;--line:#dcded1;--coral:#e97d68;--mint:#4ba994;--soft:#eaece1;--white:#fffef9}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Noto Sans SC','Microsoft YaHei',sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;color:inherit;cursor:pointer;border:0}button:focus-visible,a:focus-visible,[role=button]:focus-visible{outline:3px solid #d6a54b;outline-offset:5px}button:disabled{cursor:default;opacity:.35}button:not(:disabled):active{transform:translateY(2px)}.topbar{max-width:1280px;margin:auto;padding:28px 46px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:2px}.brand-en{display:block;font-size:7px;font-weight:500;letter-spacing:1.6px;margin-top:5px}.brand-mark{display:grid;grid-template-columns:12px 12px;gap:3px;transform:rotate(-8deg)}.brand-mark i{width:12px;height:12px;background:var(--mint);border-radius:3px}.brand-mark i:nth-child(2){background:var(--coral);border-radius:50%}.brand-mark i:nth-child(3){background:#dbb968}.brand-mark i:nth-child(4){background:var(--ink)}.top-actions{display:flex;align-items:center;gap:26px}.edition{font-size:11px;color:var(--muted);letter-spacing:1px}.icon-button{background:none;font-size:21px;display:flex;align-items:center;gap:5px}.sound-off{font-size:9px;color:var(--muted)}.text-button{background:none;font-size:12px}.text-button span{margin-left:9px}main{max-width:1050px;margin:0 auto;padding:36px 36px 0}.heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}.eyebrow{font-size:10px;letter-spacing:2px;color:#7c8979;display:flex;align-items:center;gap:8px}.eyebrow>span{width:6px;height:6px;background:var(--mint);border-radius:50%}h1{font-size:48px;letter-spacing:3px;margin:8px 0 7px;font-weight:900;line-height:1.3}.title-dot{color:var(--coral)}.heading p{font-size:12px;margin:0;color:#7f877e;letter-spacing:1px}.demo-label{display:flex;align-items:center;gap:16px;transform:rotate(5deg);padding-right:12px}.demo-label>span{font-family:Georgia,serif;font-style:italic;font-size:68px;line-height:1;color:#c3cab7}.demo-label>div{font-size:12px;letter-spacing:2px;line-height:1.9}.demo-label small{font-size:8px;letter-spacing:1px;color:var(--muted)}.game-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:46px;align-items:start}.play-area{background:#ebece2;border:1px solid #dfe1d4;border-radius:24px;padding:18px 24px 14px;position:relative;box-shadow:0 8px 30px #293b3504}.board-bar{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#74816f;letter-spacing:.7px}.move-count{display:flex;align-items:baseline;gap:5px;font-size:9px}.move-count b{font-size:19px;letter-spacing:1px;color:var(--ink);font-family:monospace;font-weight:400}.board-wrap{position:relative;display:grid;place-items:center;min-height:350px;aspect-ratio:1.15;isolation:isolate}.board-decoration{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:Georgia,serif;font-style:italic;color:#b1b9a5;font-size:11px;letter-spacing:1px}#board{display:block;width:100%;max-width:415px;max-height:410px;overflow:visible;touch-action:none;user-select:none}.board-footer{display:flex;justify-content:center;gap:22px;border-top:1px solid #d9ddce;padding-top:13px;margin-top:6px;font-size:9px;color:#86917e}.board-footer>span{display:flex;align-items:center;gap:6px}.tiny-target{height:9px;width:9px;border:2px solid #b9aa91;border-radius:50%}.tiny-exit{font-size:13px;font-style:normal;font-weight:700;color:#7a927d}.sidebar{padding-top:5px}.chapter-line{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:1px}.chapter-line>span:first-child{font-family:monospace;color:#8b9486}.chapter-line>span:last-child{background:#e3e8da;padding:4px 9px;border-radius:20px;color:#718064;font-size:9px;letter-spacing:0}h2{font-size:25px;letter-spacing:.5px;margin:14px 0 12px}.level-note{font-size:12px;line-height:1.9;color:#7a8479;margin:0;min-height:68px}.objectives{padding:17px 0 15px;border-bottom:1px solid var(--line)}.objectives>div:first-child,.exit-progress{display:flex;align-items:center;justify-content:space-between;font-size:11px}.objectives strong{font-size:20px;font-weight:500}.objectives em{font-size:12px;font-style:normal;color:#9ba291}.progress-track{height:4px;background:#dde0d2;border-radius:3px;margin-top:9px}.progress-track i{display:block;height:100%;background:var(--mint);border-radius:3px;transition:width .3s}.exit-progress{margin-top:14px;color:#818a7e}.exit-token{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border:1px solid var(--c);border-radius:6px;color:var(--c);font-size:10px;margin-left:5px}.exit-token.done{background:var(--c);color:white}.control-panel{padding-top:17px}.selection-line{display:flex;align-items:center;justify-content:space-between;font-size:10px}.selection-line>span:last-child{color:#99a08e;font-size:9px}.selection-line i{display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--coral);margin-right:6px}.dpad{display:grid;grid-template-columns:45px 45px 45px;grid-template-rows:39px 39px 39px;gap:5px;justify-content:center;margin:17px auto 8px}.dir{background:#fffdf6;border:1px solid #dce0d2;border-bottom-width:3px;border-radius:10px;font-family:Arial,sans-serif;font-size:22px;transition:background .15s}.dir:hover{background:#e0e7d7}.up{grid-area:1/2}.left{grid-area:2/1}.right{grid-area:2/3}.down{grid-area:3/2}.dpad-center{grid-area:2/2;display:grid;place-items:center;font-size:25px;color:var(--coral)}.keyboard-note{text-align:center;font-size:8px;color:#9aa18f;white-space:nowrap;margin:8px 0 18px}.tools{display:flex;gap:7px}.tools button{flex:1;padding:10px 0;border-radius:8px;background:transparent;border:1px solid #d9decf;font-size:10px;transition:background .2s}.tools button:hover{background:#e7ebdf}.tools button span{font-size:15px;vertical-align:-1px;margin-right:4px}.thought{margin-top:20px;padding-left:12px;border-left:2px solid #d1d7c4}.thought>span{font-size:8px;letter-spacing:1px;color:#9ba78d}.thought p{font-size:10px;line-height:1.8;margin:5px 0 0;color:#8b9583}.level-nav{margin-top:29px}.nav-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.nav-heading>span{font-size:11px;font-weight:500;letter-spacing:1px}.nav-heading small{font-size:9px;color:#949d8d}.level-list{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.level-button{position:relative;display:flex;align-items:center;gap:11px;background:#eeeee5;border:1px solid transparent;border-radius:11px;padding:12px 11px;text-align:left}.level-button:hover{background:#e3e8da}.level-button.active{background:#e5ecdf;border-color:#9cae8f}.level-button .number{width:27px;height:27px;border-radius:50%;background:#e0e3d7;display:grid;place-items:center;font:12px Georgia,serif;color:#89987e;flex-shrink:0}.level-button.active .number{background:var(--ink);color:white}.level-button.completed .number{background:#bdd5ba;color:#355c40}.level-button .level-name{font-size:10px;line-height:1.5}.level-button small{display:block;font-size:8px;color:#9aa28e;margin-top:3px}.page-footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:25px;padding:18px 0 23px;font-size:9px;letter-spacing:.4px;color:#9aa18f}.page-footer i{font-style:normal;margin:0 5px;color:#c3b180}.toast{position:absolute;bottom:28px;left:50%;transform:translate(-50%,8px);background:#293b35ed;color:#fffdf6;padding:10px 16px;font-size:11px;border-radius:12px;max-width:96%;width:max-content;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:5}.toast.visible{opacity:1;transform:translate(-50%,0)}.outcome{position:absolute;inset:18px 0 22px;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f5f3ebed;border-radius:18px;text-align:center;backdrop-filter:blur(4px);padding:24px;animation:appear .3s ease}.outcome[hidden]{display:none}.outcome .outcome-icon{font-size:42px;color:var(--mint);margin-bottom:6px}.outcome h3{font-size:25px;margin:7px 0 10px}.outcome p{font-size:12px;color:#84907e;line-height:1.9;margin:0 0 20px}.primary{background:var(--ink);color:#fffef6;border-radius:10px;padding:13px 24px;font-size:12px}.outcome .secondary{background:transparent;margin-top:12px;font-size:10px;color:#87917e}.piece{cursor:pointer;outline:none}.piece:focus-visible .piece-outline{stroke:#c69b46;stroke-width:4}.hint-arrow{animation:hint-pulse 1s infinite alternate;pointer-events:none}.paint-tile{transition:fill .2s}.goal-correct{animation:target-pop .3s ease;transform-box:fill-box;transform-origin:center}.wall-top{fill:#d4d9c8}.wall-side{fill:#bec7af}.floor-tile{stroke:#e4e7d9;stroke-width:1}dialog{background:var(--paper);border:1px solid var(--line);border-radius:22px;width:min(440px,calc(100vw - 32px));padding:32px;color:var(--ink);box-shadow:0 30px 100px #26332b33}dialog::backdrop{background:#293b3566;backdrop-filter:blur(5px)}.close-dialog{position:absolute;right:17px;top:12px;background:none;font-size:25px;color:#8e9985}dialog h2{font-size:29px;margin:18px 0 25px}.help-step{display:flex;gap:15px;margin-bottom:20px}.help-step>b{font-family:Georgia,serif;font-size:20px;color:#a7b399;font-style:italic}.help-step p{margin:0;color:#82907a;font-size:11px;line-height:1.9}.help-step strong{display:block;font-size:13px;color:var(--ink);margin-bottom:3px}.help-note{background:#e7ebde;padding:12px;border-radius:9px;font-size:10px;line-height:1.9;color:#7b886f;margin:0 0 20px}.close-help{width:100%}@keyframes appear{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@keyframes hint-pulse{from{opacity:.5}to{opacity:1}}@keyframes target-pop{50%{transform:scale(1.25)}}
+.fresh-start{display:block;background:none;margin:15px auto 0;color:#8b9583;font-size:9px;padding:5px}
+.exit-status{text-align:center;margin:5px 0 12px;font-size:10px;line-height:1.7;color:#7f8b75}.exit-status.ready{color:#35816f;font-weight:600}.dir:disabled{opacity:.2}
+@media(min-width:1400px){main{padding-top:45px}.heading{margin-bottom:38px}.game-layout{gap:52px}.board-wrap{min-height:390px}}
+@media(max-width:800px){.topbar{padding:19px 24px}.edition{display:none}main{padding:28px 24px 0}.game-layout{gap:24px;grid-template-columns:minmax(0,1fr) 245px}.play-area{padding:15px}.board-wrap{min-height:310px}.board-footer{font-size:8px;gap:12px}.level-button{padding:10px 7px;gap:6px}.level-button .level-name{font-size:9px}.level-button .number{width:22px;height:22px}.thought{display:none}}
+@media(max-width:620px){.topbar{padding:16px 21px}.brand{font-size:11px}.top-actions{gap:15px}.text-button{font-size:11px}.brand-en{font-size:6px}.heading{margin-bottom:20px}.eyebrow{font-size:8px;letter-spacing:1px}main{padding:22px 18px 0}h1{font-size:36px;margin:6px 0}.heading p{font-size:10px;letter-spacing:.5px}.demo-label{padding:0;gap:9px}.demo-label>span{font-size:48px}.demo-label>div{font-size:9px}.demo-label small{font-size:6px}.game-layout{display:flex;flex-direction:column;gap:20px}.play-area{width:100%;padding:13px 14px 12px;border-radius:18px}.board-wrap{min-height:0;aspect-ratio:1.1}#board{max-height:350px;width:100%}.board-bar{font-size:9px}.board-footer{padding-top:11px;font-size:8px}.sidebar{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 142px;column-gap:20px;padding:0 4px}.chapter-line{grid-column:1;font-size:8px}.chapter-line>span:last-child{font-size:8px;padding:3px 7px}h2{grid-column:1;font-size:22px;margin:9px 0 6px}.level-note{grid-column:1;font-size:10px;line-height:1.9;min-height:0}.objectives{grid-column:1;padding:12px 0 0;border:0}.objectives strong{font-size:16px}.objectives em{font-size:10px}.objectives>div:first-child,.exit-progress{font-size:9px}.exit-progress{margin-top:10px}.control-panel{grid-column:2;grid-row:1/5;padding-top:0;align-self:center}.selection-line{justify-content:center;font-size:9px}.selection-line>span:last-child{display:none}.dpad{grid-template-columns:38px 38px 38px;grid-template-rows:36px 36px 36px;margin:12px 0 0;gap:4px}.dir{font-size:21px}.keyboard-note{display:none}.tools{grid-column:2;grid-row:5;gap:4px;align-self:end}.tools button{font-size:8px;padding:7px 0}.tools button span{display:block;font-size:15px;margin:0 0 2px}.thought{display:none}.level-nav{margin-top:25px}.level-list{gap:6px}.level-button{flex-direction:column;gap:7px;text-align:center;padding:10px 2px;border-radius:10px}.level-button .level-name{font-size:8px;white-space:nowrap}.level-button small{display:none}.nav-heading>span{font-size:10px}.nav-heading small{font-size:8px}.page-footer{font-size:8px;letter-spacing:0;margin-top:22px;padding-bottom:20px}.page-footer>span:last-child{font-size:7px}.outcome{inset:12px 0 20px}.outcome h3{font-size:22px}.outcome p{font-size:10px}.toast{font-size:10px;bottom:23px}.board-decoration{font-size:9px;bottom:2px}}
+[hidden]{display:none!important}
+body{background-image:linear-gradient(#697c4f06 1px,transparent 1px),linear-gradient(90deg,#697c4f06 1px,transparent 1px);background-size:44px 44px}
+.header-left{display:flex;align-items:center;gap:20px}.bulb-button{width:44px;height:44px;display:grid;place-items:center;border:1px solid #cfd5c2;border-radius:13px;background:#fffdf6b8;box-shadow:0 3px 0 #dfe3d4;color:#5b6d4c;transition:background .2s}.bulb-button:hover{background:#fff5ce}.topbar{padding-top:20px;padding-bottom:20px}.top-actions{gap:20px}body[data-screen=home] .topbar{border:0}body[data-screen=home] .brand,body[data-screen=home] #back-home{display:none}body[data-screen=game] main{padding-top:22px}body[data-screen=game] .heading{margin-bottom:22px}body[data-screen=game] .heading h1{font-size:36px}
+.home-screen{min-height:calc(100svh - 85px);display:flex;align-items:center;justify-content:center;position:relative;padding:25px 24px 70px}.home-copy{text-align:center;position:relative;z-index:1;max-width:620px;width:100%}.home-eyebrow{color:#8b997c;font-size:10px;letter-spacing:4px}.home-copy h1{font-size:clamp(48px,8vw,78px);font-weight:900;letter-spacing:6px;margin:16px 0 10px;line-height:1.2}.home-copy h1>span{color:var(--coral);letter-spacing:0}.home-copy>p{font-size:13px;color:#87917d;letter-spacing:2px;margin:0}.home-art{position:relative;width:254px;height:193px;margin:23px auto 32px;transform:rotate(-7deg)}.art-grid{position:absolute;inset:0 7px 12px;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr);gap:4px;transform:skewY(3deg)}.art-grid>i{display:block;background:#e0e4d6;border-radius:10px;box-shadow:0 5px 0 #cdd5bf,0 9px 12px #71815b10}.art-grid>.coral{background:#efc5b4;box-shadow:0 5px 0 #d6aa98}.art-grid>.mint{background:#bad9c8;box-shadow:0 5px 0 #9ebbab}.art-piece{position:absolute;width:48px;height:48px;display:grid;place-items:center;border-radius:12px;font-size:29px;color:#fff9eb;box-shadow:0 5px 0 #c56a57,0 12px 16px #6d493a20;animation:home-float 4s ease-in-out infinite}.coral-piece{background:var(--coral);left:130px;top:4px;transform:rotate(3deg)}.mint-piece{background:var(--mint);left:70px;top:65px;box-shadow:0 5px 0 #38816c,0 12px 16px #365c4220;animation-delay:-2s}.art-caption{position:absolute;font:italic 12px Georgia,serif;color:#99a18b;bottom:-16px;left:0;right:0;letter-spacing:.8px}.start-game{display:block;margin:0 auto;width:232px;padding:16px 28px;border-radius:13px;background:#314838;color:#fffcef;font-size:15px;letter-spacing:3px;box-shadow:0 5px 0 #203428,0 10px 20px #31483813;transition:background .2s}.start-game>span{float:right;letter-spacing:0}.start-game:hover{background:#446449}.choose-level{display:block;margin:20px auto 0;background:none;color:#7c8a70;font-size:11px;letter-spacing:2px;padding:5px 16px}.choose-level:hover{color:#314838}.home-progress{font-size:10px;color:#9aa58d;margin-top:19px;letter-spacing:1px}.home-bottom{position:absolute;left:36px;right:36px;bottom:24px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#9ca78f}.home-levels{display:flex;justify-content:center;gap:9px;margin:18px auto 0}.home-levels button{width:81px;display:flex;flex-direction:column;align-items:center;gap:7px;padding:12px 4px;border-radius:12px;border:1px solid #d6ddc9;background:#fffdf6d6}.home-levels button:hover{background:#e2ead9}.home-levels b{font:17px Georgia,serif;color:#5f7651}.home-levels small{font-size:8px;color:#8b987e}
+.guide-dialog{width:min(480px,calc(100vw - 28px));max-height:calc(100dvh - 28px);padding:24px 30px 20px;border:1px solid #cfd5c0;border-radius:23px;background:#f6f3e9;overflow-y:auto;overscroll-behavior:contain;box-shadow:0 24px 100px #20342830}.guide-dialog::backdrop{background:#f2eedbd9;backdrop-filter:blur(7px)}.guide-top{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:10px;color:#8c977f;letter-spacing:.7px}.guide-top>button{padding:5px;background:none;font-size:10px;color:#929b85}.guide-dots{display:flex;justify-content:center;gap:6px;margin:19px 0 15px}.guide-dots>span{width:6px;height:6px;border-radius:9px;background:#d6dccb;transition:width .2s}.guide-dots>.active{width:22px;background:#72966b}.guide-dots>.complete{background:#afc6a5}.guide-dialog h2{text-align:center;font-size:26px;line-height:1.4;margin:0 0 10px;letter-spacing:.4px}.guide-copy{font-size:12px;line-height:1.9;color:#7b8871;text-align:center;margin:0 auto;min-height:46px;max-width:350px}.guide-practice{display:flex;flex-direction:column;align-items:center;background:#e9ecdf;border:1px solid #dee3d2;border-radius:16px;margin:18px auto 12px;padding:10px 12px 9px}#guide-board{width:100%;max-width:240px;height:auto;max-height:240px;display:block;touch-action:none;user-select:none}#guide-board [data-guide-piece]{cursor:pointer;outline:none}#guide-board [data-guide-piece]:focus-visible>rect:first-child{stroke:#b6953f;stroke-width:3}.practice-label{font-size:8px;color:#9ca68e;margin:5px 0 0;letter-spacing:.6px}.guide-feedback{font-size:11px;color:#6e8a5d;min-height:22px;text-align:center;line-height:1.8}.guide-controls{display:flex;align-items:center;justify-content:center;gap:15px;margin:7px 0 19px}.guide-controls>button{background:#fffdf7;border:1px solid #d5ddc9;border-radius:9px;padding:10px;font-size:11px}.guide-pad{display:flex;gap:6px}.guide-pad button{width:41px;height:40px;background:#fffdf7;border:1px solid #d5ddc9;border-bottom:3px solid #d5ddc9;border-radius:9px;font:21px Arial,sans-serif}.guide-pad button:hover:not(:disabled){background:#dfebd5}.guide-controls button:disabled{opacity:.3}.guide-actions{display:flex;align-items:center;gap:12px;justify-content:space-between;border-top:1px solid #dfe3d5;padding-top:17px}.guide-actions>#guide-prev{background:none;font-size:10px;color:#8c9980;padding:10px 4px}.guide-actions>.primary{min-width:175px;font-size:12px;background:#314838}.guide-actions>.primary:disabled{opacity:.4}.guide-footnote{font-size:9px;text-align:center;color:#9ca58f;margin:14px 0 0;line-height:1.8}
+@keyframes home-float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+@media(max-width:620px){.topbar{padding:14px 19px}.header-left{gap:14px}.bulb-button{width:40px;height:40px;border-radius:12px}.top-actions{gap:14px}.home-screen{min-height:calc(100svh - 69px);padding:18px 18px 65px}.home-copy h1{font-size:53px;letter-spacing:3px}.home-eyebrow{font-size:8px;letter-spacing:2.5px}.home-copy>p{font-size:11px;letter-spacing:1px}.home-art{scale:.88;margin:13px auto 15px}.start-game{width:210px;padding:15px 24px;font-size:14px}.home-bottom{left:20px;right:20px;font-size:8px;letter-spacing:1px;bottom:18px}.home-levels{gap:5px}.home-levels button{width:61px;padding:10px 2px}.home-levels small{font-size:7px}.home-progress{font-size:9px}.guide-dialog{padding:20px 20px 17px;border-radius:20px}.guide-dialog h2{font-size:23px}.guide-copy{font-size:11px;min-height:44px}.guide-top{font-size:9px}.guide-dots{margin:14px 0 12px}.guide-practice{margin-top:14px}#guide-board{max-width:210px;max-height:210px}.guide-pad{gap:5px}.guide-pad button{width:38px;height:39px}.guide-controls{gap:10px;margin-bottom:15px}.guide-controls>button{font-size:10px;padding:10px 7px}.guide-actions>.primary{min-width:155px}.guide-feedback{font-size:10px}body[data-screen=game] .heading h1{font-size:30px}body[data-screen=game] main{padding-top:18px}}
+@media(max-height:740px){.home-art{height:155px;width:220px;margin:14px auto 27px}.art-piece{width:41px;height:41px;font-size:25px}.coral-piece{left:113px}.mint-piece{left:60px;top:55px}.home-copy h1{font-size:clamp(46px,7vw,65px)}.home-screen{padding-top:10px;padding-bottom:55px}.guide-dialog{padding-top:17px;padding-bottom:15px}.guide-dialog h2{font-size:22px}.guide-dots{margin:10px 0}.guide-copy{font-size:11px;min-height:0}.guide-practice{margin:10px 0 9px}#guide-board{max-height:180px}.guide-controls{margin:3px 0 12px}.guide-actions{padding-top:12px}.guide-footnote{margin-top:10px}}
+.guide-input-tabs{display:flex;width:max-content;margin:12px auto 0;padding:3px;border:1px solid #dbe1ce;border-radius:10px;background:#e9edde}.guide-input-tabs button{font-size:10px;background:none;color:#8b987f;padding:6px 15px;border-radius:7px;transition:background .15s,box-shadow .15s}.guide-input-tabs button[aria-selected=true]{background:#fffdf6;color:#425d39;box-shadow:0 2px 5px #3b563010}.guide-dialog .guide-practice{margin-top:11px;overflow:visible}.guide-demo{pointer-events:none}.demo-motion{animation:guideSwipeMotion 2.8s ease-in-out infinite}.demo-paint-trail{opacity:0;animation:guidePaintTrail 2.8s ease-in-out infinite;stroke-dasharray:none}.swipe-hand{filter:drop-shadow(1px 3px 2px #263b3133)}.hand-tap{animation:guideTapMotion 2.8s ease-in-out infinite;filter:drop-shadow(1px 3px 2px #263b3133)}.guide-dialog[data-input=keyboard] .swipe-hand,.guide-dialog[data-input=keyboard] .demo-tap{display:none}.guide-keyboard{display:none;grid-template-columns:repeat(4,38px);gap:5px 6px}.guide-keyboard button{height:34px;border:1px solid #aebca1;border-bottom:3px solid #aebca1;border-radius:7px;background:#fffdf5;color:#435c39;padding:0;display:grid;place-items:center}.guide-keyboard kbd{font:600 15px 'Microsoft YaHei',sans-serif;pointer-events:none}.guide-dialog[data-input=keyboard] .guide-keyboard{display:grid}.guide-dialog[data-input=keyboard] .guide-pad{display:none}.guide-dialog[data-input=keyboard] .demo-key,.guide-dialog[data-input=keyboard][data-demonstrating=tap] .demo-combo{animation:guideKeyPress 2.8s ease-in-out infinite}.guide-action-legend{display:flex;align-items:center;justify-content:center;gap:7px;min-height:27px;margin:-6px 0 14px;font-size:10px;color:#8b987e}.guide-action-legend kbd{font:600 12px 'Microsoft YaHei',sans-serif;min-width:25px;padding:4px 6px;border:1px solid #c4cfb8;border-bottom:3px solid #bdc9b0;border-radius:6px;background:#fffdf5;color:#4d6742}.guide-dialog[data-input=keyboard][data-demonstrating=swipe] .demo-combo,.guide-dialog[data-input=keyboard][data-demonstrating=undo] .demo-combo{animation:guideKeyPress 2.8s ease-in-out infinite}.demo-success{color:#6c8b5e}.guide-undo-hand{position:absolute;left:22px;top:21px;width:45px;height:49px;pointer-events:none;z-index:2;display:none;animation:guideTapMotion 2.8s ease-in-out infinite}.guide-undo-hand svg{width:100%;height:100%}#guide-undo{position:relative}.guide-dialog[data-input=swipe][data-demonstrating=undo] .guide-undo-hand{display:block}.guide-dialog[data-input=keyboard][data-demonstrating=undo] .guide-keyboard,.guide-dialog[data-demonstrating=tap] .guide-keyboard,.guide-dialog[data-demonstrating=tap] .guide-pad{display:none}.guide-dialog .guide-controls{margin-top:7px;margin-bottom:13px}.guide-footnote{margin-top:10px}
+@keyframes guideSwipeMotion{0%,12%{opacity:0;transform:translate(0,0)}20%,26%{opacity:1;transform:translate(0,0)}65%,78%{opacity:1;transform:translate(var(--demo-dx),var(--demo-dy))}90%,100%{opacity:0;transform:translate(var(--demo-dx),var(--demo-dy))}}
+@keyframes guidePaintTrail{0%,25%,100%{opacity:0}65%,78%{opacity:.14}90%{opacity:0}}
+@keyframes guideKeyPress{0%,20%,83%,100%{background:#fffdf5;color:#435c39;transform:translateY(0);box-shadow:none}26%,65%{background:#49673c;color:#fffdf5;transform:translateY(2px);box-shadow:inset 0 2px 3px #263b3122}}
+@keyframes guideTapMotion{0%,12%,83%,100%{opacity:0;transform:translateY(6px) scale(1)}24%,62%{opacity:1;transform:translateY(0) scale(1)}34%,46%{opacity:1;transform:translateY(2px) scale(.9)}}
+@media(max-width:620px){.guide-input-tabs{margin-top:10px}.guide-input-tabs button{font-size:9px;padding:5px 14px}.guide-action-legend{font-size:9px;gap:5px;margin-bottom:11px}.guide-keyboard{grid-template-columns:repeat(4,33px);gap:4px 5px}.guide-keyboard button{height:30px}.guide-keyboard kbd{font-size:13px}.guide-action-legend kbd{font-size:10px;padding:3px 5px;min-width:23px}.guide-dialog .guide-copy{font-size:11px}}
+@media(max-height:740px){.guide-dialog .guide-input-tabs{margin-top:8px}.guide-dialog .guide-practice{margin-top:9px;padding-top:7px}.guide-dialog #guide-board{max-height:155px}.guide-action-legend{margin-bottom:10px;min-height:22px}.guide-dialog .guide-controls{margin-bottom:9px}.guide-keyboard button{height:28px}.guide-keyboard{gap:4px 6px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.demo-motion{opacity:.75;transform:translate(var(--demo-dx),var(--demo-dy))}.demo-paint-trail{opacity:.12}.hand-tap,.guide-undo-hand{opacity:1}}
+</style><style>/* The game surface deliberately contains only the board, counters and controls. */
+:root{--viewport-height:100vh}
+@supports(height:100svh){:root{--viewport-height:100svh}}
+@supports(height:100dvh){:root{--viewport-height:100dvh}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body[data-level-count="55"] .level-screen{width:min(1040px,100%)}body[data-level-count="55"] .level-grid{grid-template-columns:repeat(5,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.08;padding:17px;gap:8px}
+@media(max-width:800px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:620px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}body[data-level-count="55"] .level-card{padding:11px;gap:5px;aspect-ratio:.98}body[data-level-count="55"] .level-card-number{font-size:16px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:58px;max-height:57px}body[data-level-count="55"] .level-check{width:15px;height:15px;right:8px;top:10px}}
+@media(max-width:360px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.25}}
+@media(max-height:520px) and (min-width:600px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(5,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.55;padding:9px;gap:3px}body[data-level-count="55"] .level-card-number{font-size:15px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:45px;max-height:40px}}
+body[data-screen=game] #sound,body[data-screen=levels] #sound{display:none}
+.app-header{height:80px;max-width:1080px;width:100%;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:18px}.app-actions{margin-left:auto;display:flex;align-items:center;gap:9px}.ui-icon{width:42px;height:42px;display:inline-flex;align-items:center;justify-content:center;background:#fffdf6b8;border:1px solid #d8decf;border-radius:12px;color:#63785a;position:relative;flex:0 0 auto;transition:background .15s,border-color .15s}.ui-icon:hover:not(:disabled){background:#e5eddc;border-color:#b5c4a7}.ui-icon svg{pointer-events:none}.sound-icon:not(.on)::after{content:'';position:absolute;width:23px;height:1px;background:#8d9d80;rotate:-42deg;box-shadow:0 1px 0 #fffdf6}.level-hud{display:flex;align-items:center;gap:10px;color:#78886e}.level-hud small{font-size:10px;letter-spacing:2px}.level-hud b{font:24px Georgia,serif;color:#4a6240;font-weight:400}body[data-screen=home] #level-number,body[data-screen=levels] #level-number,body[data-screen=home] #back-home,body[data-screen=home] #level-menu,body[data-screen=levels] #level-menu{display:none}body[data-screen=game],body[data-screen=levels]{background-image:none}.home-screen{min-height:calc(100svh - 80px);padding:0 22px 70px}.home-copy h1{margin:0 0 18px}.home-art{margin:28px auto 42px}.home-copy .start-game{margin-top:0}.home-screen .home-art .art-caption{display:none}
+.level-screen{width:min(800px,100%);min-height:calc(100svh - 80px);margin:0 auto;padding:50px 32px 48px;display:flex;flex-direction:column;justify-content:center}.level-screen h1{font-size:28px;letter-spacing:3px;font-weight:600;margin:0 0 34px;text-align:center}.level-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%}.level-card{border:1px solid #d9e0d0;background:#eff1e8;aspect-ratio:1.18;border-radius:19px;position:relative;padding:20px;text-align:left;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;transition:background .2s,border-color .2s,box-shadow .2s}.level-card:hover{background:#e2ead9;border-color:#b1c2a1;box-shadow:0 6px 18px #31483808}.level-card-number{align-self:flex-start;font:20px Georgia,serif;color:#819274}.level-card>svg:not(.level-check){width:90px;height:85px;max-width:70%;flex:1;max-height:90px;opacity:.95}.level-check{position:absolute;right:16px;top:17px;width:20px;height:20px;color:#6f9860}.level-card:focus-visible{outline-offset:4px}
+#game-content.game-screen{max-width:none;width:100%;height:calc(100svh - 80px);min-height:0;margin:0;padding:8px 24px 24px;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:20px}.board-stage{min-height:0;display:grid;place-items:center}.game-screen .play-area{width:min(100%,calc(100svh - 270px),520px);max-height:100%;aspect-ratio:1;border:1px solid #dde2d3;border-radius:24px;background:#ebeee2;padding:42px 18px 14px;box-shadow:0 10px 35px #293b3504;position:relative}.game-screen .board-bar{position:absolute;inset:12px 20px auto;display:flex;align-items:center;justify-content:space-between;height:23px}.target-counter{display:flex;align-items:center;gap:7px}.target-counter i{height:9px;width:9px;border:2px solid #81a574;border-radius:50%}.target-counter strong{font-size:12px;font-weight:500;letter-spacing:.3px;color:#738c62}.target-counter em{font-size:10px;font-style:normal;color:#a3ae96}.game-screen .move-count{font-size:9px;color:#a0ab94;gap:6px}.game-screen .move-count b{font:17px Georgia,serif;color:#718466}.game-screen .board-wrap{min-height:0;aspect-ratio:auto;height:100%;width:100%;display:flex;align-items:center;justify-content:center}.game-screen #board{width:100%;height:100%;max-width:none;max-height:none;overflow:visible;display:block}.game-controls{width:min(100%,480px);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:52px;flex-shrink:0}.game-controls .tools{display:flex;align-items:center;gap:8px}.game-controls .tools .ui-icon{flex:0 0 auto;width:42px;height:42px;padding:0;background:#fffdf6b8;border:1px solid #d8decf;border-radius:12px}.game-controls .dpad{grid-template-columns:44px 44px 44px;grid-template-rows:40px 40px 40px;gap:5px;margin:0;flex-shrink:0}.game-controls .dir{font-size:23px}.game-controls .dpad-center{font-size:23px}.game-screen .outcome{inset:0;border-radius:16px;padding:20px}.game-screen .outcome h3{margin:4px 0 24px;font-size:27px;font-weight:600}.game-screen .outcome .outcome-icon{font-size:36px;margin-bottom:12px}.game-screen .outcome .primary{padding:12px 26px}.game-screen .outcome .secondary{margin-top:14px;font-size:11px}.game-screen .toast{bottom:6px;font-size:11px;padding:9px 14px;max-width:100%}
+@media(min-width:1200px) and (min-height:800px){.level-grid{gap:24px}.level-screen{width:850px}.level-card{padding:25px;aspect-ratio:1.25}.level-card>svg:not(.level-check){max-height:110px;width:110px;height:110px}.level-card-number{font-size:23px}}
+@media(max-width:620px){.app-header{height:68px;padding:12px 18px;gap:12px}.app-actions{gap:7px}.ui-icon{width:38px;height:38px;border-radius:11px}.ui-icon svg{width:19px;height:19px}.level-hud{gap:7px}.level-hud small{font-size:9px;letter-spacing:1px}.level-hud b{font-size:21px}.home-screen{min-height:calc(100svh - 68px);padding:0 20px 54px}.home-copy h1{font-size:50px;margin-bottom:10px}.home-art{margin:14px auto 26px}.home-copy .start-game{width:210px}.level-screen{min-height:calc(100svh - 68px);padding:24px 22px 36px;justify-content:center}.level-screen h1{font-size:24px;margin-bottom:25px}.level-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.level-card{padding:15px;border-radius:16px;aspect-ratio:1.12;gap:7px}.level-card-number{font-size:18px}.level-card>svg:not(.level-check){width:74px;height:72px;max-height:75px}.level-check{top:13px;right:12px;width:18px;height:18px}#game-content.game-screen{height:calc(100svh - 68px);padding:2px 16px max(18px,env(safe-area-inset-bottom));gap:19px}.game-screen .play-area{width:min(100%,calc(100svh - 248px),440px);padding:36px 11px 10px;border-radius:20px}.game-screen .board-bar{inset:10px 17px auto}.game-screen .move-count b{font-size:16px}.game-controls{gap:28px;max-width:340px}.game-controls .tools{gap:6px}.game-controls .tools .ui-icon{width:40px;height:40px}.game-controls .dpad{grid-template-columns:42px 42px 42px;grid-template-rows:39px 39px 39px;gap:4px}.game-controls .dir{font-size:22px;border-radius:10px}.game-screen .toast{font-size:10px;bottom:4px}.game-screen .outcome h3{font-size:24px}}
+@media(max-width:360px){.app-header{padding-left:15px;padding-right:15px}.app-actions{gap:5px}.ui-icon{width:36px;height:36px}.game-controls{gap:12px}.game-controls .tools .ui-icon{width:38px;height:38px}.level-screen{padding-left:18px;padding-right:18px}.level-card{aspect-ratio:1.18;padding:12px}.level-card>svg:not(.level-check){max-height:65px}.level-screen h1{margin-bottom:20px}}
+@media(max-height:520px) and (min-width:600px){.app-header{height:60px;padding-top:8px;padding-bottom:8px}#game-content.game-screen{height:calc(100svh - 60px);grid-template-columns:minmax(0,1fr) 170px;grid-template-rows:minmax(0,1fr);gap:30px;max-width:850px;padding:8px 24px 15px;margin:0 auto}.game-screen .play-area{width:min(100%,calc(100svh - 90px));padding:32px 9px 7px;border-radius:18px}.game-controls{flex-direction:column-reverse;gap:25px}.game-controls .tools .ui-icon{width:38px;height:38px}.game-controls .dpad{grid-template-rows:34px 34px 34px;grid-template-columns:38px 38px 38px}.level-screen{min-height:calc(100svh - 60px);padding:12px 30px 24px;width:850px;max-width:100%}.level-screen h1{font-size:20px;margin-bottom:16px}.level-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.level-card{padding:12px;aspect-ratio:.95}.level-card-number{font-size:17px}.level-card>svg:not(.level-check){width:58px;max-height:65px}.level-check{top:10px;right:8px}.home-screen{min-height:calc(100svh - 60px);padding:0 20px 30px}.home-copy{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:35px;align-items:center;width:auto}.home-copy h1{grid-column:2;grid-row:1;font-size:42px;margin:0;align-self:end}.home-art{grid-column:1;grid-row:1/3;scale:.75;margin:0 -20px;height:170px}.home-copy .start-game{grid-column:2;grid-row:2;width:180px;padding:13px 20px;align-self:start;margin-top:18px}}
+
+/* Definite board dimensions avoid percentage-height and SVG intrinsic-size
+   feedback in iOS WebViews. Keep the grid tracks shrinkable as well. */
+#game-content.game-screen{--board-size:min(calc(100vw - 48px),calc(var(--viewport-height) - 270px),520px);height:calc(var(--viewport-height) - 80px);grid-template-columns:minmax(0,1fr)}
+.board-stage{min-width:0;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.game-screen .play-area{min-width:0;width:var(--board-size);height:var(--board-size);max-width:100%;aspect-ratio:auto}
+.game-screen .board-wrap{position:absolute;inset:42px 18px 14px;width:auto;height:auto;min-width:0}
+.game-screen #board{min-width:0;min-height:0}
+.game-controls{min-width:0;max-width:100%}
+.game-screen .outcome{max-width:100%;overflow:auto}
+.win-rating{max-width:100%;line-height:1.6}
+@media(max-width:620px){
+ #game-content.game-screen{--board-size:min(calc(100vw - 32px),calc(var(--viewport-height) - 248px),440px);height:calc(var(--viewport-height) - 68px)}
+ .game-screen .board-wrap{inset:36px 11px 10px}
+ .game-controls{width:min(100%,340px)}
+}
+@media(max-height:620px) and (max-width:599px){
+ .game-screen .outcome{justify-content:flex-start;padding:12px}
+ .game-screen .outcome h3{font-size:20px;margin-bottom:6px}
+ .game-screen .outcome>.star-row{font-size:23px;margin-bottom:6px}
+ .win-reward{font-size:12px;margin-bottom:6px}
+ .win-rating{margin-bottom:10px}
+ .game-screen .outcome .primary{padding:9px 20px}
+ .game-screen .outcome .secondary{margin-top:7px}
+}
+@media(max-height:520px) and (min-width:600px){
+ #game-content.game-screen{--board-size:min(calc(100vw - 248px),calc(var(--viewport-height) - 90px),572px);height:calc(var(--viewport-height) - 60px);grid-template-columns:minmax(0,1fr) 170px}
+ .game-screen .board-wrap{inset:32px 9px 7px}
+}
+</style><style>.star-row{display:flex;justify-content:center;gap:3px;color:#d5d8cb;font-size:12px;line-height:1;letter-spacing:0}.star-row .lit{color:#d8a844}.level-card>.star-row{margin-top:3px}.game-screen .outcome h3{margin:0 0 12px}.outcome>.star-row{font-size:31px;gap:7px;margin-bottom:13px}.win-reward{font-size:14px;color:#9b762c;margin-bottom:10px;display:flex;align-items:center;gap:5px}.coin-mark{color:#d4a348;font-size:15px;text-shadow:0 1px 0 #fff3ba}.win-rating{font-size:10px;color:#89917f;margin-bottom:20px}.shop-dialog{width:min(560px,calc(100vw - 28px));padding:24px;max-height:90svh;overflow:auto}.shop-heading{display:flex;justify-content:space-between;align-items:center}.shop-heading h2{margin:0;font-size:25px}.shop-heading .ui-icon{font-size:24px}.shop-wallet{display:flex;gap:8px;align-items:center;margin:12px 0 24px;color:#8b9381;font-size:12px}.shop-wallet b{color:#9b762c;font-size:22px;font-weight:500;margin-left:auto}.skin-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.skin-card{border:1px solid #dce1d3;border-radius:16px;text-align:center;padding:20px 12px 14px;background:#eef0e6}.skin-card.equipped{border-color:#92ad82;background:#e7edde}.skin-swatch{display:flex;justify-content:center;gap:9px;padding:6px 0}.skin-swatch span{display:grid;place-items:center;width:42px;height:42px;background:var(--swatch);color:#fff9ee;font-size:23px;border-radius:12px;box-shadow:inset 0 -4px 0 #0001,0 5px 8px #283c3010}.skin-card h3{font-size:13px;font-weight:500;margin:14px 0}.skin-card button{font-size:11px;background:#314838;color:#fffdf4;border-radius:8px;padding:9px 14px;min-width:83px}.skin-card button:disabled{background:transparent;color:#638056;opacity:1}#shop-status{font-size:12px;color:#947747;min-height:18px;margin:14px 0 4px}.shop-footnote{font-size:10px;color:#929b87;margin:0}.art-grid>.coral{background:var(--coral-light,#efc5b4)}.art-grid>.mint{background:var(--mint-light,#bad9c8)}
+@media(max-width:620px){body[data-level-count="55"] .level-card{padding:9px 8px;aspect-ratio:.9;gap:4px}body[data-level-count="55"] .level-card>svg:not(.level-check){max-height:48px;height:48px;width:53px}.level-card .star-row{font-size:10px}.app-actions{gap:5px}.app-header{padding-left:15px;padding-right:15px}.ui-icon{width:35px;height:35px}.shop-dialog{padding:20px}.game-screen .outcome .primary{padding:10px 22px}.game-screen .outcome h3{font-size:23px;margin-bottom:8px}.outcome>.star-row{font-size:26px;margin-bottom:9px}.win-rating{font-size:9px;margin-bottom:15px}.game-screen .outcome .secondary{margin-top:10px}}
+@media(max-width:360px){body[data-level-count="55"] .level-card{aspect-ratio:1.15}.app-actions{gap:4px}.ui-icon{width:32px;height:34px}.ui-icon svg{width:18px;height:18px}.skin-card{padding:14px 8px}.skin-swatch span{width:35px;height:35px}}
+@media(max-height:520px) and (min-width:600px){body[data-level-count="55"] .level-card{aspect-ratio:1.8;gap:2px;padding:7px}body[data-level-count="55"] .level-card>svg:not(.level-check){max-height:35px;height:35px}.outcome>.star-row{font-size:23px;margin-bottom:8px}.game-screen .outcome h3{font-size:21px;margin-bottom:6px}.win-rating{margin-bottom:10px}.win-reward{margin-bottom:6px}.game-screen .outcome .primary{padding:9px 20px}.game-screen .outcome .secondary{margin-top:7px}.shop-dialog{max-height:94svh}}
+.reward-claimed{font-size:11px;color:#949b86}.outcome .star-row .lit{animation:star-arrive .4s both}.outcome .star-row .lit:nth-child(2){animation-delay:.1s}.outcome .star-row .lit:nth-child(3){animation-delay:.2s}@keyframes star-arrive{from{opacity:0;transform:translateY(7px) scale(.6)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){.outcome .star-row .lit{animation:none}}
+.art-piece>svg{width:29px;height:29px}.dpad-center>svg{width:26px;height:26px}.skin-swatch svg{width:27px;height:27px}.shop-tabs{display:flex;background:#e8ecdf;padding:4px;border-radius:11px;gap:4px;margin:0 0 17px}.shop-tabs button{flex:1;padding:9px 12px;background:transparent;border-radius:8px;color:#8b9680;font-size:12px}.shop-tabs button[aria-selected=true]{background:#fffdf5;color:#405735;box-shadow:0 2px 7px #31483809}.pattern-piece{display:flex;gap:10px;margin:0 0 17px}.pattern-piece button{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;background:#eceee3;border:1px solid #dce1d3;border-radius:12px;padding:10px;font-size:11px;color:#87917c}.pattern-piece button[aria-pressed=true]{background:#e4eddc;border-color:#96ae84;color:#47613b}.pattern-block{background:var(--swatch);display:grid;place-items:center;width:44px;height:44px;border-radius:12px;color:#fff9ee;box-shadow:inset 0 -4px 0 #0001,0 4px 8px #283c3010;flex-shrink:0}.pattern-block svg{width:29px;height:29px}.pattern-piece .pattern-block{width:32px;height:32px;border-radius:9px}.pattern-piece svg{width:23px;height:23px}.pattern-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.pattern-card{display:flex;flex-direction:column;align-items:center;padding:15px 8px 11px}.pattern-card h3{font-size:12px;margin:11px 0}.pattern-card button{min-width:70px;font-size:10px;padding:8px 10px}body[data-level-count="55"] .level-card{aspect-ratio:1.35;padding:12px;gap:6px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:75px;max-height:75px;height:75px}
+@media(max-width:620px){body[data-level-count="55"] .level-card{aspect-ratio:.98;padding:9px 7px;gap:4px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:48px;height:48px;max-height:48px}.pattern-card{padding:13px 5px 10px}.pattern-card button{min-width:65px;padding:8px}.pattern-list{gap:8px}.pattern-block{width:39px;height:39px}.pattern-block svg{width:27px;height:27px}}
+@media(max-width:360px){.pattern-list{grid-template-columns:repeat(2,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.25}}
+@media(max-height:520px) and (min-width:600px){body[data-level-count="55"] .level-card{aspect-ratio:1.8;padding:7px;gap:2px}body[data-level-count="55"] .level-card>svg:not(.level-check){max-height:35px;height:35px}.shop-dialog{max-height:94svh}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-screen{padding-top:24px;padding-bottom:24px}body[data-level-count="55"] .level-screen h1{margin-bottom:20px}body[data-level-count="55"] .level-card{aspect-ratio:1.6;padding:10px;gap:4px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:60px;height:60px;max-height:60px}body[data-level-count="55"] .level-card-number{font-size:17px}}
+body:has(dialog[open]){overflow:hidden}.shop-dialog{scrollbar-width:thin;scrollbar-color:#b7c2aa transparent}
+.shop-heading{position:sticky;top:0;z-index:3;background:var(--paper);padding-bottom:8px}
+.pattern-instruction{font-size:11px;color:#929b86;margin:0 0 14px}.pattern-workspace{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;align-items:start}.pattern-workspace .pattern-piece{display:flex;flex-direction:column;gap:16px;margin:0;position:sticky;top:58px}.pattern-workspace .pattern-target{flex:none;min-width:0;flex-direction:column;gap:12px;padding:16px 9px;border-radius:16px;min-height:145px;font-size:12px}.pattern-target .pattern-block{width:62px;height:62px;border-radius:16px}.pattern-target .pattern-block svg{width:39px;height:39px}.pattern-target small{font-size:10px;height:12px;color:#8b9c7e}.pattern-target.previewing{border-style:dashed}.pattern-target.pattern-drop-hover{background:#dce9d2!important;border-color:#73965e!important;box-shadow:0 0 0 3px #99b38333}.pattern-workspace .pattern-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.pattern-tile{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:#eef0e6;border:1px solid #e0e4d7;border-radius:12px;padding:11px 3px 9px;touch-action:none;user-select:none;cursor:grab}.pattern-tile.selected{border-color:#a1b58e;background:#e5ecdd}.pattern-tile:active{cursor:grabbing;transform:none!important}.pattern-mini{width:29px;height:29px;display:block;pointer-events:none}.pattern-mini svg{width:100%;height:100%}.pattern-name{font-size:10px;color:#76856b;white-space:nowrap;pointer-events:none}.pattern-tile small{display:flex;align-items:center;justify-content:center;gap:3px;font-size:9px;color:#a5a98c;height:12px;pointer-events:none}.tiny-coin{display:inline-block;width:7px;height:7px;border:1px solid #c4a66a;border-radius:50%;background:#d7b96f44;flex-shrink:0}.pattern-confirm{margin-top:17px;min-height:42px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid #e1e5d8;padding-top:13px;font-size:12px;color:#617351}.pattern-confirm small{font-size:10px;color:#97a08d}.pattern-confirm button{display:flex;align-items:center;justify-content:center;gap:5px;background:#314838;color:#fffdf4;border-radius:9px;padding:10px 16px;font-size:11px}.pattern-confirm-empty{font-size:10px;color:#a0a793}.pattern-drag-ghost{position:fixed;width:38px;height:38px;pointer-events:none;z-index:15;transform:translate(-50%,-50%);filter:drop-shadow(0 4px 5px #31483833);background:#fffdf5d9;border-radius:10px;padding:4px}.pattern-drag-ghost svg{width:100%;height:100%}
+@media(max-width:620px){.pattern-workspace{grid-template-columns:84px minmax(0,1fr);gap:13px}.pattern-workspace .pattern-target{min-height:114px;padding:12px 6px;gap:10px;font-size:11px}.pattern-target .pattern-block{width:48px;height:48px;border-radius:13px}.pattern-target .pattern-block svg{width:32px;height:32px}.pattern-workspace .pattern-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.pattern-tile{gap:5px;padding:9px 2px 7px;border-radius:10px}.pattern-mini{width:25px;height:25px}.pattern-name{font-size:9px}.pattern-tile small{font-size:8px}.pattern-instruction{font-size:10px}.pattern-confirm{font-size:11px}.pattern-confirm button{font-size:10px;padding:10px 12px}}
+@media(max-width:360px){.shop-dialog{padding:16px}.pattern-workspace{grid-template-columns:70px minmax(0,1fr);gap:9px}.pattern-workspace .pattern-target{min-height:102px;padding:10px 4px;gap:8px}.pattern-target .pattern-block{width:43px;height:43px}.pattern-target .pattern-block svg{width:29px;height:29px}.pattern-workspace .pattern-list{gap:5px}.pattern-mini{width:23px;height:23px}.pattern-tile{padding:7px 1px 6px;gap:4px}.pattern-name{font-size:8px}.shop-wallet{margin:6px 0 14px}.shop-tabs{margin-bottom:12px}.pattern-instruction{font-size:9px}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-grid{gap:12px}body[data-level-count="55"] .level-card{aspect-ratio:2;padding:6px;gap:3px}body[data-level-count="55"] .level-card>svg:not(.level-check){width:44px;height:44px;max-height:44px}body[data-level-count="55"] .level-card-number{font-size:16px}body[data-level-count="55"] .level-card .star-row{font-size:10px}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}body[data-level-count="55"] .level-card{aspect-ratio:1.65}body[data-level-count="55"] .level-screen{width:min(1080px,100%)}}
+.barrier-fragments{pointer-events:none}.barrier-fragments path{transform-box:fill-box;transform-origin:center;animation:crumb-pop .4s ease-out both;--chip-x:-9px;--chip-y:-10px}.barrier-fragments path:nth-child(2){--chip-x:12px;--chip-y:-8px}.barrier-fragments path:nth-child(3){--chip-x:-8px;--chip-y:11px}.barrier-fragments path:nth-child(4){--chip-x:12px;--chip-y:9px}.guide-barrier-demo{animation:barrier-nudge 2.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes crumb-pop{0%{opacity:1}100%{opacity:0;transform:translate(var(--chip-x),var(--chip-y)) rotate(30deg) scale(.6)}}@keyframes barrier-nudge{0%,40%,75%,100%{opacity:1}50%,60%{opacity:.3}55%{opacity:.75}}@media(prefers-reduced-motion:reduce){.barrier-fragments path,.guide-barrier-demo{animation:none}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(7,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.4}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(8,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.25}}
+.portal-active .portal-ring{animation:portal-arrive .65s ease-out}.portal-swipe-hand{animation:portal-gesture 2.6s ease-in-out infinite}@keyframes portal-arrive{0%,100%{stroke-width:2.5;opacity:1}45%{stroke-width:5;opacity:.45}}@keyframes portal-gesture{0%,5%{opacity:0;transform:translate(0,0)}12%{opacity:1;transform:translate(0,0)}32%{opacity:1;transform:translate(var(--swipe-x),var(--swipe-y))}42%,100%{opacity:0;transform:translate(var(--swipe-x),var(--swipe-y))}}@media(prefers-reduced-motion:reduce){.portal-active .portal-ring,.portal-swipe-hand{animation:none}}
+@media(min-width:801px) and (min-height:521px){body[data-level-count="55"] .level-grid{grid-template-columns:repeat(11,minmax(0,1fr))}body[data-level-count="55"] .level-card{aspect-ratio:1.1}}
+/* Homepage acknowledgements and the final little painting. */
+.home-credits{position:fixed;left:max(24px,env(safe-area-inset-left));bottom:max(22px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:7px;background:transparent;color:#8b9681;font-size:11px;padding:8px 4px;border-radius:8px;letter-spacing:.5px}.home-credits span{font-size:18px;color:#9eaf8c}.home-credits:hover{color:#47613b}.home-credits:focus-visible{outline:2px solid #9eaf8c;outline-offset:3px}
+.credits-dialog,.finale-dialog{max-height:calc(100svh - 32px);overflow:auto}.credits-dialog{width:min(430px,calc(100vw - 32px));padding:26px 28px 30px}.credits-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}.credits-heading h2{font-size:24px;margin:0}.credits-heading .ui-icon{width:32px;height:32px;font-size:21px;flex-shrink:0}.credits-body{text-align:center;padding:25px 0 2px}.credits-flower{font:42px Georgia,serif;color:#a1ad8b;display:block;margin:2px auto 24px}.credits-body h3{font-size:14px;font-weight:600;margin:22px 0 12px}.credits-body p{font-size:11px;color:#89927f;line-height:2.1;margin:0 0 23px}.credits-body .credits-contact{margin-bottom:0}.credits-contact span{user-select:text;letter-spacing:.7px;color:#687b5a}
+.finale-dialog{position:relative;width:min(460px,calc(100vw - 32px));padding:27px 22px 25px;text-align:center}.finale-dialog h2{font-size:27px;margin:2px 0 6px;font-weight:600}.finale-close{position:absolute;right:16px;top:16px;width:32px;height:32px;font-size:21px}.finale-art svg{width:100%;height:auto;max-height:39svh;display:block;overflow:visible}.finale-block{transform-origin:0 0}.finale-message{font-size:13px;color:#7c8f70;letter-spacing:1px;margin:2px 0 23px}.finale-actions{display:flex;flex-direction:column;align-items:center;gap:15px}.finale-actions .primary{min-width:154px}.finale-actions .secondary,.finale-again{background:transparent;color:#87977b;font-size:11px;padding:3px 8px}.finale-again{margin-top:11px}.finale-spark{opacity:.45}
+@media(max-width:620px){.home-credits{left:17px;bottom:max(17px,env(safe-area-inset-bottom));font-size:10px}.credits-dialog{padding:22px}.credits-body{padding-top:16px}.credits-body p{font-size:11px}.finale-dialog{padding:24px 18px 22px}.finale-dialog h2{font-size:24px}.finale-message{font-size:12px;margin-bottom:18px}.finale-art svg{max-height:35svh}.finale-again{font-size:10px;margin-top:8px}}
+@media(max-height:520px){.finale-dialog{padding-top:16px;padding-bottom:17px}.finale-art svg{max-height:37svh}.finale-dialog h2{font-size:22px}.finale-message{margin:0 0 12px}.finale-actions{gap:8px}.finale-actions .primary{padding:9px 23px}.credits-body{padding-top:9px}.credits-flower{margin-bottom:10px;font-size:30px}.credits-body h3{margin:13px 0 8px}.credits-body p{margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){.finale-block,.finale-route,.finale-gate,.finale-spark{animation:none!important}}
+</style></head>
+<body data-screen="home">
+<header class="app-header"><span id="level-number" class="level-hud" aria-label="当前关卡"></span><div class="app-actions">
+<button id="skin-shop" class="ui-icon" aria-label="皮肤商店" title="皮肤商店"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="m8 3-5 3 3 5 2-1v11h8V10l2 1 3-5-5-3c0 4-8 4-8 0Z"/></svg></button><button id="help" class="ui-icon" aria-label="玩法教程" title="玩法教程"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6m-5 3h4M8.4 14.7a6 6 0 1 1 7.2 0c-.9.7-1.1 1.4-1.1 2.3h-5c0-.9-.2-1.6-1.1-2.3Z"/><path d="M12 6a3 3 0 0 0-3 3"/></svg></button>
+<button id="level-menu" class="ui-icon" aria-label="关卡集合" title="关卡集合"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
+<button id="back-home" class="ui-icon" aria-label="返回主页" title="返回主页"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg></button>
+<button id="sound" class="ui-icon sound-icon" aria-label="开启音效" title="开启音效"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13M9 8l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></svg><span id="sound-state" aria-hidden="true"></span></button>
+</div></header>
+<section id="home-screen" class="home-screen" aria-label="游戏主页"><div class="home-copy"><h1>最后一笔<span>.</span></h1><div class="home-art" aria-hidden="true"><div class="art-grid"><i></i><i class="paint coral"></i><i class="paint coral"></i><i></i><i></i><i class="paint mint"></i><i class="paint coral"></i><i></i><i></i><i class="paint mint"></i><i class="paint mint"></i><i></i></div><span class="art-piece coral-piece">✦</span><span class="art-piece mint-piece">◆</span></div><button id="start-game" class="start-game">开始 <span>→</span></button></div><button id="credits" class="home-credits" aria-label="特别感谢"><span aria-hidden="true">✳</span> 特别感谢</button></section>
+<section id="level-screen" class="level-screen" aria-label="选择关卡" hidden><h1>关卡</h1><div id="levels" class="level-grid"></div></section>
+<main id="game-content" class="game-screen" hidden><div class="board-stage"><div class="play-area"><div class="board-bar"><span class="target-counter" aria-label="已完成目标"><i></i><strong id="target-progress"></strong></span><span class="move-count"><b id="move-count">0</b><span>步</span></span></div><div class="board-wrap"><svg id="board" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="游戏棋盘，点选方块后滑动，或使用方向按钮移动"></svg><div id="toast" class="toast" role="status" aria-live="polite"></div><div id="outcome" class="outcome" hidden></div></div></div></div>
+<div class="game-controls"><div class="tools"><button id="undo" class="ui-icon" aria-label="撤销上一步" title="撤销"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h11a6 6 0 0 1 0 12M3 10l5-5M3 10l5 5"/></svg></button><button id="reset" class="ui-icon" aria-label="重来" title="重来"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6"/></svg></button><button id="hint" class="ui-icon" aria-label="提示一步" title="提示"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6Z"/></svg></button></div><div class="dpad" aria-label="移动控制"><button class="dir up" data-dir="0" aria-label="向上移动">↑</button><button class="dir left" data-dir="3" aria-label="向左移动">←</button><span class="dpad-center" id="pad-piece" aria-hidden="true">✦</span><button class="dir right" data-dir="1" aria-label="向右移动">→</button><button class="dir down" data-dir="2" aria-label="向下移动">↓</button></div></div></main>
+<dialog id="credits-dialog" class="credits-dialog" aria-labelledby="credits-title"><div class="credits-heading"><h2 id="credits-title">特别感谢</h2><button id="credits-close" class="ui-icon" aria-label="关闭特别感谢">×</button></div><div class="credits-body"><span class="credits-flower" aria-hidden="true">✳</span><h3>感谢每一位试玩的人</h3><p>关于方块、颜色、传送门和每一次滑动的反馈，<br>让这个小游戏一点点变得更好。</p><p>也谢谢你，陪它走到最后一笔。</p><h3>保持联系</h3><p class="credits-contact">联系微信：<span>13052090337</span></p></div></dialog><dialog id="finale-dialog" class="finale-dialog" aria-labelledby="finale-title"><button id="finale-close" class="ui-icon finale-close" aria-label="跳过动画，返回结算">×</button><h2 id="finale-title">完成</h2><div id="finale-art" class="finale-art"></div><p class="finale-message">谢谢你，玩到这里。</p><div class="finale-actions"><button id="finale-done" class="primary">查看结算</button><button id="finale-replay" class="secondary">再看一次</button></div></dialog>
+<dialog id="help-dialog" class="guide-dialog" aria-labelledby="guide-title"><div class="guide-top"><span id="guide-label">第一次，慢慢来</span><button id="guide-skip" aria-label="跳过教程">跳过 ×</button></div><div class="guide-dots" id="guide-dots"></div><h2 id="guide-title"></h2><p class="guide-copy" id="guide-copy"></p><div class="guide-practice"><svg id="guide-board" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="教程练习棋盘"></svg><span class="practice-label">练习画布 · 不影响关卡进度</span></div><div id="guide-feedback" class="guide-feedback" role="status" aria-live="polite"></div><div class="guide-controls"><button id="guide-undo" aria-label="教程撤销">↶ 撤销</button><div class="guide-pad"><button data-guide-dir="0" aria-label="教程向上">↑</button><button data-guide-dir="3" aria-label="教程向左">←</button><button data-guide-dir="2" aria-label="教程向下">↓</button><button data-guide-dir="1" aria-label="教程向右">→</button></div></div><div class="guide-actions"><button id="guide-prev">上一步</button><button id="guide-next" class="primary" disabled>亲手试一试</button></div><p class="guide-footnote">以后想重看，点右上角的灯泡就好。</p></dialog>
+<dialog id="shop-dialog" class="shop-dialog" aria-labelledby="shop-title"><div class="shop-heading"><h2 id="shop-title">皮肤</h2><button id="shop-close" class="ui-icon" aria-label="关闭皮肤商店">×</button></div><div class="shop-wallet"><span>金币</span><b id="coin-balance">0</b><span class="coin-mark" aria-hidden="true">●</span></div><div class="shop-tabs" role="tablist" aria-label="皮肤分类"><button id="color-tab" role="tab" aria-selected="true" aria-controls="color-panel" data-shop-tab="colors">配色</button><button id="pattern-tab" role="tab" aria-selected="false" aria-controls="pattern-panel" data-shop-tab="patterns">图案</button></div><div id="color-panel" role="tabpanel" aria-labelledby="color-tab"><div id="skin-list" class="skin-list"></div></div><div id="pattern-panel" role="tabpanel" aria-labelledby="pattern-tab" hidden><p class="pattern-instruction">拖动图案到方块上试搭，也可以点选。</p><div class="pattern-workspace"><div id="pattern-piece" class="pattern-piece" role="group" aria-label="选择装饰的方块"></div><div id="pattern-list" class="pattern-list" aria-label="可拖动的图案"></div></div><div id="pattern-confirm" class="pattern-confirm" aria-live="polite"></div></div><p id="shop-status" role="status" aria-live="polite"></p><p class="shop-footnote">通关获得金币，提升星级可补领差额。</p></dialog><script>
+(function(root){
+ 'use strict';
+ const inks=['#718cb4','#b17f9b','#71978b'],fills=['#dde9f3','#eee0eb','#e0ede5'];
+ function tile(x,y,size,pair=0,active=false,cell=''){
+  const ink=inks[pair%inks.length],fill=fills[pair%fills.length],letter=String.fromCharCode(65+pair);
+  return '<g class="portal-tile '+(active?'portal-active':'')+'" data-portal="'+cell+'" transform="translate('+x+' '+y+') scale('+(size/64)+')" role="img" aria-label="'+letter+'传送门，连接另一扇'+letter+'门"><rect x="5" y="5" width="54" height="54" rx="15" fill="'+fill+'" opacity=".8"/><ellipse class="portal-ring" cx="32" cy="32" rx="19" ry="23" fill="#ffffff88" stroke="'+ink+'" stroke-width="2.5"/><ellipse cx="32" cy="32" rx="13" ry="17" fill="none" stroke="'+ink+'" stroke-width="1" opacity=".4"/><text x="32" y="37" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="'+ink+'">'+letter+'</text><path d="m11 17 4-2 1 5m37 27-4 2-1-5" fill="none" stroke="'+ink+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></g>';
+ }
+ // Keyframes follow real floor cells; each teleport fades out at its entrance
+ // and reappears at its exit instead of flying through walls between them.
+ function frames(l,from,next,size=64,base=next.path.at(-1),demo=false){
+  const point=cell=>'translate('+((cell%l.width-base%l.width)*size)+'px,'+((Math.floor(cell/l.width)-Math.floor(base/l.width))*size)+'px)';
+  const hops=new Set((next.teleports||[]).map(h=>h.index)),rows=[{cell:from,t:0,opacity:1}];let t=0;
+  for(let i=0;i<next.path.length;i++){const cell=next.path[i];if(i>0&&hops.has(i-1)){rows.push({cell:next.path[i-1],t:t+.15,opacity:0},{cell,t:t+.16,opacity:0});t+=.6;rows.push({cell,t,opacity:1});}else{t+=1;rows.push({cell,t,opacity:1});}}
+  const result=rows.map(r=>({transform:point(r.cell),opacity:r.opacity,offset:demo ? .12+r.t/Math.max(1,t)*.6 : r.t/Math.max(1,t)}));
+  if(demo){result.unshift({transform:point(from),opacity:1,offset:0});result.push({transform:point(next.path.at(-1)),opacity:0,offset:.78},{transform:point(from),opacity:0,offset:.95},{transform:point(from),opacity:1,offset:1});}return result;
+ }
+ function trail(l,from,next,size){const x=from%l.width,y=Math.floor(from/l.width),p=c=>((c%l.width-x)*size)+' '+((Math.floor(c/l.width)-y)*size),hops=new Set((next.teleports||[]).map(h=>h.index));let d='M0 0';for(let i=0;i<next.path.length;i++)d+=(i>0&&hops.has(i-1)?' M':' L')+p(next.path[i]);return d;}
+ const api={tile,frames,trail};if(typeof module!=='undefined')module.exports=api;else root.StrokePortals=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){
+ 'use strict';
+ function tile(x,y,size,broken=false,burst=false,cell=''){
+  const art=broken?'<path d="m9 48 7-2 3 5-8 2Zm35-1 7 2-2 5-6-2ZM28 53l4-3 5 3-4 3Z" fill="#c1a078" opacity=".32"/>':
+   '<rect x="7" y="12" width="50" height="45" rx="12" fill="#ad8d62"/><rect x="7" y="6" width="50" height="45" rx="12" fill="#dfc49b" stroke="#bd9c6b" stroke-width="1.5"/><path d="m34 10-9 14 10 5-9 17" fill="none" stroke="#a68355" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 16h7m20 25h6" stroke="#f6e6cc" stroke-width="3" stroke-linecap="round"/><text x="47" y="21" text-anchor="middle" font-size="10" fill="#9a784e" font-family="sans-serif">1</text>';
+  const fragments=burst?'<g class="barrier-fragments" fill="#d7b586"><path d="m15 16 9 2-4 8Z"/><path d="m43 17 8 4-6 6Z"/><path d="m25 38 7 4-5 8Z"/><path d="m43 38 9 3-6 9Z"/></g>':'';
+  return '<g class="crumbly '+(broken?'broken':'intact')+'" '+(broken?'data-broken-barrier':'data-barrier')+'="'+cell+'" transform="translate('+x+' '+y+') scale('+(size/64)+')" role="img" aria-label="'+(broken?'挡板已碎裂，可以通过':'一次性挡板，撞停后碎裂')+'">'+art+fragments+'</g>';
+ }
+ const api={tile};if(typeof module!=='undefined')module.exports=api;else root.StrokeBarriers=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){
+ 'use strict';
+ // Monochrome SVG drawings stay crisp on phone screens and in the offline build.
+ const drawings={
+  cat:'<path d="M5 10 4 3l6 4a11 11 0 0 1 4 0l6-4-1 7a8 8 0 1 1-14 0Z"/><path d="M8 12v1m8-1v1m-5 3h2l-1 1Zm1 1v2m0 0-2-1m2 1 2-1M3 14l4 1m-4 3h4m14-4-4 1m4 3h-4"/>',
+  dog:'<path d="M7 7c-6-4-7 8-3 8l3-3m10-5c6-4 7 8 3 8l-3-3M7 7a8 8 0 0 1 10 0l1 8c0 8-12 8-12 0Z"/><path d="M9 11v1m6-1v1m-5 4 2 2 2-2Zm2 2v2m-2 0q2 2 4 0"/>',
+  heart:'<path d="M12 20C-3 11 5-1 12 7c7-8 15 4 0 13Z"/>',
+  rabbit:'<path d="M7 11C0-3 10-2 10 10m4 0c0-12 10-13 3 1a7 7 0 1 1-10 0Z"/><path d="M9 14v1m6-1v1m-4 3h2l-1 1Zm1 1-2 1m2-1 2 1"/>',
+  paw:'<path d="M6 17c0-2 3-7 6-7s6 5 6 7c0 5-4 2-6 2s-6 3-6-2Z"/><ellipse cx="4" cy="10" rx="2" ry="3" transform="rotate(-25 4 10)"/><ellipse cx="9" cy="5" rx="2" ry="3"/><ellipse cx="15" cy="5" rx="2" ry="3"/><ellipse cx="20" cy="10" rx="2" ry="3" transform="rotate(25 20 10)"/>',
+  flower:'<path d="M9 7C4-2 0 9 6 10c-9 4-1 12 4 6 1 10 11 5 7-1 10 1 8-10 1-8 3-9-8-10-9 0Z"/><circle cx="12" cy="11" r="3"/>',
+  moon:'<path d="M16 3A9 9 0 1 0 21 17 9 9 0 0 1 16 3Z"/><path d="M5 3v4M3 5h4m13 2v4m-2-2h4"/>',
+  bolt:'<path d="m14 2-10 12h7l-1 8L21 9h-8Z"/>',
+  fish:'<path d="M18 12C9-2 0 9 3 14c4 7 10 4 15-2Zm0 0 4-6v12Z"/><circle cx="7" cy="11" r=".8"/><path d="M12 8q-3 4 0 8"/>',
+  butterfly:'<path d="M12 11C3-5-5 8 9 14c-10 6 0 12 3 2 3 10 13 4 3-2C29 8 21-5 12 11Zm0 0v6m0-6-3-7m3 7 3-7"/>'
+ };
+ function mark(color){return color===1?'<path d="M12 2Q14 10 22 12 14 14 12 22 10 14 2 12 10 10 12 2Z" fill="currentColor" stroke="none"/>':'<path d="m12 2 10 10-10 10L2 12Z" fill="currentColor" stroke="none"/>';}
+ function drawing(id,color=1){const art=drawings[id]||mark(color);return id==='flower'?'<g transform="translate(2.16 2.16) scale(.82)">'+art+'</g>':art;}
+ function svg(id,color=1){return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">'+drawing(id,color)+'</svg>';}
+ function stamp(id,color,cx,cy,size,ink){return '<g transform="translate('+(cx-size)+' '+(cy-size)+') scale('+(size/12)+')" color="'+ink+'" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" pointer-events="none">'+drawing(id,color)+'</g>';}
+ const api={svg,stamp};if(typeof module!=='undefined')module.exports=api;else root.StrokeOrnaments=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){
+ 'use strict';
+ const skins=[
+  {id:'classic',name:'原色',price:0,palette:['#e97d68','#f4c8b8','#c75f4d','#4ba994','#b9ddd0','#35816f']},
+  {id:'sunset',name:'落日汽水',price:120,palette:['#e69a42','#f5d8ac','#ba712a','#8472be','#d8cfee','#635196']},
+  {id:'berry',name:'莓果晴空',price:180,palette:['#ce7299','#efd0de','#a95176','#579ac9','#c8e0ef','#3776a2']},
+  {id:'forest',name:'森林奶茶',price:240,palette:['#ae8866','#e5d4be','#876447','#73966a','#d2e0c6','#52774b']}
+ ];
+ const patterns=[{id:'original',name:'原始标记',price:0},{id:'cat',name:'猫咪',price:80},{id:'dog',name:'狗狗',price:80},{id:'heart',name:'爱心',price:60},{id:'rabbit',name:'兔兔',price:100},{id:'paw',name:'肉垫',price:60},{id:'flower',name:'小花',price:80},{id:'moon',name:'月亮',price:100},{id:'bolt',name:'闪电',price:100},{id:'fish',name:'小鱼',price:80},{id:'butterfly',name:'蝴蝶',price:120}];
+ const earned=stars=>[0,30,60,100][stars]||0;
+ const stars=(moves,par)=>moves<=par+2?3:moves<=par+6?2:1;
+ function create(){return {version:2,coins:0,claimed:{},owned:['classic'],equipped:'classic',ownedPatterns:['original'],piecePatterns:['original','original']};}
+ function normalize(raw){const data=create();if(!raw||typeof raw!=='object')return data;
+  data.coins=Number.isSafeInteger(raw.coins)&&raw.coins>=0?raw.coins:0;
+  data.claimed=Object.fromEntries(Object.entries(raw.claimed||{}).filter(([i,n])=>/^\d+$/.test(i)&&Number.isInteger(n)&&n>=1&&n<=3));
+  data.owned=[...new Set(['classic',...(Array.isArray(raw.owned)?raw.owned:[]).filter(id=>skins.some(s=>s.id===id))])];
+  if(data.owned.includes(raw.equipped))data.equipped=raw.equipped;
+  data.ownedPatterns=[...new Set(['original',...(Array.isArray(raw.ownedPatterns)?raw.ownedPatterns:[]).filter(id=>patterns.some(p=>p.id===id))])];
+  data.piecePatterns=data.piecePatterns.map((id,i)=>data.ownedPatterns.includes(raw.piecePatterns?.[i])?raw.piecePatterns[i]:id);return data;
+ }
+ function reward(data,index,moves,par){const rating=stars(moves,par),prior=data.claimed[index]||0,amount=Math.max(0,earned(rating)-earned(prior));
+  return {data:{...data,coins:data.coins+amount,claimed:{...data.claimed,[index]:Math.max(prior,rating)}},stars:rating,amount};
+ }
+ function buy(data,id){const skin=skins.find(s=>s.id===id);if(!skin)return {data,error:'皮肤不存在'};
+  if(data.owned.includes(id))return {data:{...data,equipped:id}};
+  if(data.coins<skin.price)return {data,error:'金币不足'};
+  return {data:{...data,coins:data.coins-skin.price,owned:[...data.owned,id],equipped:id}};
+ }
+ function buyPattern(data,id,piece){const pattern=patterns.find(p=>p.id===id);if(!pattern||![0,1].includes(piece))return {data,error:'请选择方块和图案'};
+  const owned=data.ownedPatterns.includes(id);if(!owned&&data.coins<pattern.price)return {data,error:'金币不足'};
+  return {data:{...data,coins:data.coins-(owned?0:pattern.price),ownedPatterns:owned?data.ownedPatterns:[...data.ownedPatterns,id],piecePatterns:data.piecePatterns.map((p,i)=>i===piece?id:p)}};
+ }
+ const api={skins,patterns,earned,stars,create,normalize,reward,buy,buyPattern};if(typeof module!=='undefined')module.exports=api;else root.StrokeEconomy=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){
+  'use strict';
+  const DIRS=[[0,-1],[1,0],[0,1],[-1,0]];
+  function prepare(level){
+    const width=level.map[0].length;
+    const portals=(level.portals||[]).map(p=>({a:{...p.a,cell:p.a.y*width+p.a.x},b:{...p.b,cell:p.b.y*width+p.b.x}})),portalLinks={};
+    portals.forEach((p,i)=>{portalLinks[p.a.cell]={to:p.b.cell,pair:i};portalLinks[p.b.cell]={to:p.a.cell,pair:i};});
+    return {...level,width,height:level.map.length,portals,portalLinks,barriers:(level.barriers||[]).map(b=>({...b,cell:b.y*width+b.x})),targets:level.targets.map(t=>({...t,cell:t.y*width+t.x})),pieces:level.pieces.map(p=>({...p,cell:p.y*width+p.x})),exits:level.exits.map(e=>({...e,cell:e.y*width+e.x}))};
+  }
+  function initial(l){const paint=Array(l.width*l.height).fill(0);l.pieces.forEach(p=>paint[p.cell]=p.color);return {positions:l.pieces.map(p=>p.cell),paint,moves:0,...(l.barriers.length?{broken:0}:{})};}
+  function exitReady(l,s){return l.targets.every(t=>s.paint[t.cell]===t.color);}
+  function move(l,s,id,dir){
+    if(s.positions[id]<0)return null;
+    const [dx,dy]=DIRS[dir], color=l.pieces[id].color, positions=s.positions.slice(),paint=s.paint.slice(),path=[];
+    let at=positions[id],exited=false,broken=s.broken||0,cracked=-1;
+    const teleports=[],routeSeen=new Set();
+    while(true){
+      // Only target paint and barriers can alter this slide's route. Abort a
+      // repeated configuration without committing partial paint or movement.
+      if(l.portals.length){const routeKey=at+'|'+broken+'|'+l.targets.map(t=>paint[t.cell]).join('');if(routeSeen.has(routeKey))return null;routeSeen.add(routeKey);}
+      const x=at%l.width+dx,y=Math.floor(at/l.width)+dy,n=y*l.width+x;
+      if(x<0||x>=l.width||y<0||y>=l.height||l.map[y][x]==='#'||positions.some((p,i)=>i!==id&&p===n))break;
+      const barrier=l.barriers.findIndex(b=>b.cell===n);
+      if(barrier>=0&&!(broken&(1<<barrier))){broken|=1<<barrier;cracked=n;break;}
+      const exit=l.exits.find(e=>e.cell===n);
+      if(exit&&(exit.color!==color||!exitReady(l,{paint})))break;
+      const portal=l.portalLinks[n];
+      if(portal&&positions.some((p,i)=>i!==id&&p===portal.to))break;
+      at=n;path.push(n);
+      const target=l.targets.find(t=>t.cell===n);
+      if(!target||paint[n]!==target.color)paint[n]=color;
+      if(exit){exited=true;break;}
+      if(portal){teleports.push({from:n,to:portal.to,pair:portal.pair,index:path.length-1});at=portal.to;path.push(at);paint[at]=color;}
+    }
+    if(!path.length&&cracked<0)return null;
+    // An adjacent bump is a real action: position stays put, barrier state changes.
+    if(!path.length)path.push(at);
+    positions[id]=exited?-1:at;
+    return {positions,paint,moves:s.moves+1,path,id,dir,exited,...(l.barriers.length?{broken,cracked}:{}),...(l.portals.length?{teleports}:{})};
+  }
+  function won(l,s){return s.positions.every(p=>p<0)&&l.targets.every(t=>s.paint[t.cell]===t.color);}
+  function stranded(l,s){return l.targets.some(t=>s.paint[t.cell]!==t.color&&!l.pieces.some((p,i)=>p.color===t.color&&s.positions[i]>=0));}
+  function key(l,s){return s.positions.join(',')+'|'+l.targets.map(t=>s.paint[t.cell]).join('')+(l.barriers.length?'|'+(s.broken||0):'');}
+  function solve(l,start=initial(l),limit=180000){
+    const queue=[{s:start,parent:-1,action:null}],seen=new Set([key(l,start)]);
+    for(let head=0;head<queue.length&&head<limit;head++){
+      const node=queue[head];
+      if(won(l,node.s)){const actions=[];let i=head;while(queue[i].parent>=0){actions.push(queue[i].action);i=queue[i].parent;}return {actions:actions.reverse(),visited:head+1};}
+      for(let p=0;p<l.pieces.length;p++)for(let d=0;d<4;d++){
+        const next=move(l,node.s,p,d);if(!next||stranded(l,next))continue;
+        const k=key(l,next);if(seen.has(k))continue;seen.add(k);queue.push({s:next,parent:head,action:[p,d]});
+      }
+    }
+    return null;
+  }
+  const api={DIRS,prepare,initial,exitReady,move,won,stranded,key,solve};
+  if(typeof module!=='undefined')module.exports=api;else root.Stroke=api;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(function(root){
+const levels=[
+ {
+  "title": "落下第一笔",
+  "theme": "学会滑行",
+  "note": "向右，再向下，沿途涂好两个圆点。滑动时，方块会一直走到墙边。",
+  "insight": "涂对的圆点会锁色，放心来回经过。",
+  "map": [
+   "#####",
+   "#...#",
+   "###.#",
+   "###.#",
+   "#####"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   }
+  ],
+  "par": 2
+ },
+ {
+  "title": "绕个小小的弯",
+  "theme": "放心试一试",
+  "note": "先向下，再沿着小路绕一圈。圆点没涂完时，出口会帮你拦住方块。",
+  "insight": "圆点全部涂好后，出口会一起打开。",
+  "map": [
+   "#####",
+   "#...#",
+   "#.#.#",
+   "#...#",
+   "#####"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "par": 3
+ },
+ {
+  "title": "再转一个弯",
+  "theme": "单块小练习",
+  "note": "还是只用一块画笔。沿着折弯的小路，把三个圆点依次点亮。",
+  "insight": "想回顾操作时，可以点左上角的灯泡。",
+  "map": [
+   "#######",
+   "#.....#",
+   "#####.#",
+   "#.....#",
+   "#.#####",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 5,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   }
+  ],
+  "par": 4
+ },
+ {
+  "title": "请你让一让",
+  "theme": "认识第二块",
+  "note": "点一下薄荷块，让它向下给珊瑚块让路。两块各涂一个圆点，再各自回家。",
+  "insight": "点选另一块就能切换。不同颜色的出口不能通过。",
+  "map": [
+   "#####",
+   "#...#",
+   "#...#",
+   "#...#",
+   "#####"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 5
+ },
+ {
+  "title": "借你停一下",
+  "theme": "一次小配合",
+  "note": "薄荷圆点在中间一行。让薄荷块向上，借珊瑚块挡一下，就能停在这一行。",
+  "insight": "涂好的圆点不会被覆盖，借完位置就放心回家吧。",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 7
+ },
+ {
+  "title": "双路涂色",
+  "tutorial": "switch",
+  "map": [
+   "#####",
+   "#...#",
+   "#...#",
+   "#...#",
+   "#...#",
+   "#####"
+  ],
+  "pieces": [
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 6
+ },
+ {
+  "title": "停在中间",
+  "tutorial": "borrow",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#.#..#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "par": 8
+ },
+ {
+  "title": "借道经过",
+  "tutorial": "borrow",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#....#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "par": 9
+ },
+ {
+  "title": "谁先回家",
+  "tutorial": "order",
+  "exitOrderChallenge": true,
+  "map": [
+   "######",
+   "#...##",
+   "#....#",
+   "#.##.#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 10
+ },
+ {
+  "title": "互相帮一次",
+  "tutorial": "borrow",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#..#.#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 11
+ },
+ {
+  "title": "交错停靠",
+  "tutorial": "borrow",
+  "map": [
+   "######",
+   "#.#..#",
+   "#..#.#",
+   "#....#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 12
+ },
+ {
+  "title": "绕过隔墙",
+  "tutorial": "borrow",
+  "map": [
+   "######",
+   "##...#",
+   "#...##",
+   "#....#",
+   "#...##",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 13
+ },
+ {
+  "title": "六点协作",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.....#",
+   "#....##",
+   "#.#...#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "par": 14
+ },
+ {
+  "title": "轮流搭桥",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "##...##",
+   "#..#..#",
+   "#.....#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 15
+ },
+ {
+  "title": "最后的配合",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#...#.#",
+   "#.....#",
+   "#.#...#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 16
+ },
+ {
+  "title": "回程借位",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.....#",
+   "#.#...#",
+   "#..#..#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 17
+ },
+ {
+  "title": "穿过长廊",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#.#...#",
+   "#.#...#",
+   "#.....#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "par": 18
+ },
+ {
+  "title": "换手停靠",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#....##",
+   "#...#.#",
+   "#.....#",
+   "#..#..#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 19
+ },
+ {
+  "title": "上下接力",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.....#",
+   "##.#.##",
+   "#.....#",
+   "#...###",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 20
+ },
+ {
+  "title": "八点合奏",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#.....#",
+   "##....#",
+   "###...#",
+   "#....##",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "par": 21
+ },
+ {
+  "title": "交叉回程",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#.....#",
+   "#..#..#",
+   "#.....#",
+   "#...###",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "par": 22
+ },
+ {
+  "title": "窄道换位",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#.##.##",
+   "#..#..#",
+   "##....#",
+   "#.#...#",
+   "#...#.#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 5,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "par": 23
+ },
+ {
+  "title": "双向绕行",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "##....#",
+   "#.....#",
+   "#...#.#",
+   "#.....#",
+   "#.#...#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 24
+ },
+ {
+  "title": "八点接力",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "###...#",
+   "#.....#",
+   "##.#.##",
+   "#.....#",
+   "##.#..#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 3,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 5,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 25
+ },
+ {
+  "title": "回环协奏",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#...#.#",
+   "#.....#",
+   "#.#...#",
+   "#.....#",
+   "#....##",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 5,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 26
+ },
+ {
+  "title": "再借一步",
+  "tutorial": "order",
+  "map": [
+   "#######",
+   "#.....#",
+   "#..#..#",
+   "#..#..#",
+   "#....##",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 18
+ },
+ {
+  "title": "回头让路",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#...#.#",
+   "#..#..#",
+   "#..#..#",
+   "#....##",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "par": 20
+ },
+ {
+  "title": "三次停靠",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "##.#.##",
+   "#....##",
+   "##.#..#",
+   "#.....#",
+   "#..#..#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 22
+ },
+ {
+  "title": "交替接力",
+  "tutorial": "borrow",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.#..##",
+   "#...###",
+   "##....#",
+   "#....##",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "par": 24
+ },
+ {
+  "title": "开门之后",
+  "tutorial": "order",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.#..##",
+   "#...###",
+   "##....#",
+   "##...##",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "par": 26
+ },
+ {
+  "title": "停一下，再穿过",
+  "tutorial": "crumbly",
+  "map": [
+   "#####",
+   "#...#",
+   "#...#",
+   "#...#",
+   "#####"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   }
+  ],
+  "barriers": [
+   {
+    "x": 3,
+    "y": 1
+   }
+  ],
+  "par": 3
+ },
+ {
+  "title": "绕回新路",
+  "tutorial": "crumbly",
+  "map": [
+   "######",
+   "#....#",
+   "###..#",
+   "#.#..#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 1
+   }
+  ],
+  "barriers": [
+   {
+    "x": 4,
+    "y": 3
+   }
+  ],
+  "par": 6
+ },
+ {
+  "title": "借位拆挡",
+  "tutorial": "crumbly",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#....#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 4
+   }
+  ],
+  "par": 9
+ },
+ {
+  "title": "两道新路",
+  "tutorial": "crumbly",
+  "map": [
+   "######",
+   "#....#",
+   "#....#",
+   "#..#.#",
+   "##...#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 4,
+    "y": 4
+   },
+   {
+    "x": 2,
+    "y": 2
+   }
+  ],
+  "par": 12
+ },
+ {
+  "title": "先停后通",
+  "tutorial": "crumbly",
+  "map": [
+   "#######",
+   "#..#..#",
+   "#.....#",
+   "#....##",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 3,
+    "y": 4
+   },
+   {
+    "x": 3,
+    "y": 3
+   }
+  ],
+  "par": 15
+ },
+ {
+  "title": "轮流停靠",
+  "tutorial": "crumbly",
+  "map": [
+   "######",
+   "#...##",
+   "#....#",
+   "#...##",
+   "#....#",
+   "#.#..#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 3
+   },
+   {
+    "x": 3,
+    "y": 3
+   }
+  ],
+  "par": 16
+ },
+ {
+  "title": "替你开路",
+  "tutorial": "crumbly",
+  "map": [
+   "#######",
+   "#....##",
+   "##....#",
+   "#.....#",
+   "#..#..#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 3,
+    "y": 1
+   },
+   {
+    "x": 4,
+    "y": 2
+   }
+  ],
+  "par": 18
+ },
+ {
+  "title": "沿着旧颜色",
+  "tutorial": "crumbly",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.....#",
+   "##...##",
+   "##.#..#",
+   "#...#.#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 4,
+    "y": 3
+   },
+   {
+    "x": 2,
+    "y": 5
+   }
+  ],
+  "par": 20
+ },
+ {
+  "title": "三处新路",
+  "tutorial": "crumbly",
+  "map": [
+   "#######",
+   "##....#",
+   "#.....#",
+   "#..##.#",
+   "#....##",
+   "#.#...#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 4
+   },
+   {
+    "x": 4,
+    "y": 2
+   },
+   {
+    "x": 3,
+    "y": 4
+   }
+  ],
+  "par": 22
+ },
+ {
+  "title": "拆挡合奏",
+  "tutorial": "crumbly",
+  "map": [
+   "#######",
+   "#....##",
+   "##....#",
+   "#..#..#",
+   "#..#..#",
+   "#.#...#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 5,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 2
+   },
+   {
+    "x": 2,
+    "y": 3
+   },
+   {
+    "x": 4,
+    "y": 1
+   }
+  ],
+  "par": 24
+ },
+ {
+  "title": "另一边见",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#..#..#",
+   "####..#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   }
+  ],
+  "barriers": [],
+  "portals": [
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   }
+  ],
+  "par": 3
+ },
+ {
+  "title": "来回穿行",
+  "tutorial": "portal",
+  "map": [
+   "######",
+   "#..#.#",
+   "#..#.#",
+   "#....#",
+   "#....#",
+   "######"
+  ],
+  "pieces": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   }
+  ],
+  "barriers": [],
+  "portals": [
+   {
+    "a": {
+     "x": 4,
+     "y": 4
+    },
+    "b": {
+     "x": 2,
+     "y": 3
+    }
+   }
+  ],
+  "par": 6
+ },
+ {
+  "title": "共用一扇门",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#....##",
+   "#....##",
+   "#....##",
+   "#....##",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 4,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   }
+  ],
+  "barriers": [],
+  "portals": [
+   {
+    "a": {
+     "x": 1,
+     "y": 3
+    },
+    "b": {
+     "x": 2,
+     "y": 1
+    }
+   }
+  ],
+  "par": 9
+ },
+ {
+  "title": "穿过去拆开",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.##.##",
+   "#..#..#",
+   "#..#..#",
+   "#..#..#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 4,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 2,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 2
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 2,
+     "y": 4
+    },
+    "b": {
+     "x": 5,
+     "y": 2
+    }
+   }
+  ],
+  "par": 12
+ },
+ {
+  "title": "两对门的配合",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 4
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 5
+    }
+   }
+  ],
+  "par": 15
+ },
+ {
+  "title": "隔门开路",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#....##",
+   "#....##",
+   "#.....#",
+   "#.#..##",
+   "#.#..##",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 1,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 3,
+    "y": 2
+   },
+   {
+    "x": 4,
+    "y": 3
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 1,
+     "y": 5
+    },
+    "b": {
+     "x": 3,
+     "y": 4
+    }
+   }
+  ],
+  "par": 16
+ },
+ {
+  "title": "出门接住你",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "##....#",
+   "##...##",
+   "#.....#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 4,
+    "y": 3
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 5,
+     "y": 4
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 2,
+     "y": 5
+    }
+   }
+  ],
+  "par": 18
+ },
+ {
+  "title": "借你关扇门",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 4
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 5
+    }
+   }
+  ],
+  "par": 20
+ },
+ {
+  "title": "替你通两边",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 1
+   },
+   {
+    "x": 3,
+    "y": 2
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   }
+  ],
+  "par": 22
+ },
+ {
+  "title": "穿门合奏",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "##....#",
+   "##...##",
+   "#.....#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 4,
+    "y": 3
+   },
+   {
+    "x": 3,
+    "y": 4
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 4,
+     "y": 4
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 2,
+     "y": 5
+    }
+   }
+  ],
+  "par": 24
+ },
+ {
+  "title": "先堵，再通",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 4,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 2,
+    "y": 4
+   },
+   {
+    "x": 4,
+    "y": 1
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 5
+    }
+   }
+  ],
+  "par": 21
+ },
+ {
+  "title": "远处接住你",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 1
+   },
+   {
+    "x": 3,
+    "y": 2
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 2,
+     "y": 4
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   }
+  ],
+  "par": 22
+ },
+ {
+  "title": "三门连跳",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 1
+   },
+   {
+    "x": 3,
+    "y": 4
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 2,
+     "y": 4
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   },
+   {
+    "a": {
+     "x": 4,
+     "y": 4
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   }
+  ],
+  "par": 23
+ },
+ {
+  "title": "隔空递一棒",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "#.#..##",
+   "#.....#",
+   "#.....#",
+   "##....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 1,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 5,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 2,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 3,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 1
+   },
+   {
+    "x": 3,
+    "y": 2
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 3,
+     "y": 1
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   }
+  ],
+  "par": 24
+ },
+ {
+  "title": "最后一笔",
+  "tutorial": "portal",
+  "map": [
+   "#######",
+   "#.....#",
+   "##....#",
+   "##...##",
+   "#.....#",
+   "#.....#",
+   "#######"
+  ],
+  "pieces": [
+   {
+    "x": 1,
+    "y": 1,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 5,
+    "color": 2
+   }
+  ],
+  "exits": [
+   {
+    "x": 4,
+    "y": 5,
+    "color": 1
+   },
+   {
+    "x": 4,
+    "y": 2,
+    "color": 2
+   }
+  ],
+  "targets": [
+   {
+    "x": 3,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 2,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 4,
+    "color": 1
+   },
+   {
+    "x": 2,
+    "y": 3,
+    "color": 2
+   },
+   {
+    "x": 5,
+    "y": 2,
+    "color": 1
+   },
+   {
+    "x": 5,
+    "y": 1,
+    "color": 2
+   },
+   {
+    "x": 4,
+    "y": 3,
+    "color": 1
+   },
+   {
+    "x": 3,
+    "y": 1,
+    "color": 2
+   }
+  ],
+  "barriers": [
+   {
+    "x": 1,
+    "y": 4
+   },
+   {
+    "x": 3,
+    "y": 4
+   }
+  ],
+  "portals": [
+   {
+    "a": {
+     "x": 4,
+     "y": 4
+    },
+    "b": {
+     "x": 4,
+     "y": 1
+    }
+   },
+   {
+    "a": {
+     "x": 2,
+     "y": 1
+    },
+    "b": {
+     "x": 2,
+     "y": 5
+    }
+   },
+   {
+    "a": {
+     "x": 1,
+     "y": 5
+    },
+    "b": {
+     "x": 5,
+     "y": 5
+    }
+   }
+  ],
+  "par": 26
+ }
+];
+if(typeof module!=='undefined')module.exports=levels;else root.StrokeLevels=levels;
+})(typeof window!=='undefined'?window:globalThis);
+
+</script><script>
+(() => {
+ 'use strict';
+ const E=window.Stroke,levels=window.StrokeLevels.map(E.prepare),$=id=>document.getElementById(id),dialog=$('help-dialog');
+ const storageKey='last-stroke-guides-v1';let seen={};try{seen=JSON.parse(localStorage.getItem(storageKey)||'{}');}catch{}
+ const palette={1:['#e97d68','#f4c8b8','#c75f4d','✦'],2:['#4ba994','#b9ddd0','#35816f','◆']};
+ let piecePatterns=['original','original'];
+ const directionNames=['上','右','下','左'],arrowKeys=['↑','→','↓','←'],letterKeys=['W','D','S','A'];
+ let inputMethod='swipe';
+ const inputTabs=document.createElement('div');inputTabs.className='guide-input-tabs';inputTabs.setAttribute('role','tablist');inputTabs.setAttribute('aria-label','动画演示方式');inputTabs.innerHTML='<button type="button" role="tab" data-guide-input="swipe" aria-selected="true">手指滑动</button><button type="button" role="tab" data-guide-input="keyboard" aria-selected="false">键盘操作</button>';
+ dialog.querySelector('.guide-practice').before(inputTabs);
+ const keyboard=document.createElement('div');keyboard.className='guide-keyboard';keyboard.setAttribute('aria-label','方向键和 WASD 键盘');
+ keyboard.innerHTML=[0,2,3,1].map(d=>`<button type="button" data-guide-dir="${d}" aria-label="键盘 ${arrowKeys[d]}"><kbd>${arrowKeys[d]}</kbd></button>`).join('')+[0,3,2,1].map(d=>`<button type="button" data-guide-dir="${d}" aria-label="键盘 ${letterKeys[d]}"><kbd>${letterKeys[d]}</kbd></button>`).join('');
+ dialog.querySelector('.guide-pad').after(keyboard);
+ const actionLegend=document.createElement('div');actionLegend.className='guide-action-legend';actionLegend.id='guide-action-legend';dialog.querySelector('.guide-controls').after(actionLegend);
+ const demoLabel=dialog.querySelector('.practice-label');demoLabel.textContent='跟着动画试一试 · 演示不计入操作';
+ const handArt='<path d="M-5 23V3a5 5 0 0 1 10 0v17-8a5 5 0 0 1 10 0v10-6a5 5 0 0 1 10 0v10-5a5 5 0 0 1 10 0v17c0 11-6 19-17 19H9c-6 0-10-3-14-8L-17 35a5 5 0 0 1 7-7l5 5Z" fill="#fffdf6" stroke="#43533e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 29v9m10-10v10m10-8v8" fill="none" stroke="#bcc5af" stroke-width="2" stroke-linecap="round"/>';
+ const undoHand=document.createElement('span');undoHand.className='guide-undo-hand';undoHand.setAttribute('aria-hidden','true');undoHand.innerHTML=`<svg viewBox="-24 -10 74 80">${handArt}</svg>`;$('guide-undo').append(undoHand);
+ const lessons={
+  intro:[
+   {title:'滑一下，留下一笔。',copy:'跟着手指向右滑动，或按 → / D。方块会一直滑到墙边，并给经过的圆点上色。',moves:[[0,1]],tip:'动画只是示范；现在轮到你向右滑一下。'},
+   {title:'走错了，退一步就好。',copy:'刚才的颜色已经涂上了。点「撤销」或按 Ctrl + Z，让方块和笔迹一起回到上一步。',undo:true,tip:'点「↶ 撤销」，或按 Ctrl + Z。'},
+   {title:'先涂好，再回家。',copy:'向右，再向下，把两个圆点涂好。涂对后会锁色；圆点全部完成，出口就打开了。',moves:[[0,1],[0,2]],tip:'先向右，再向下，把这张小画布完成。'}
+  ],
+  switch:[
+   {title:'这次，有两支画笔。',copy:'每块都有自己的颜色。点一下薄荷块，或按数字 2，把控制权交给它。',select:1,tip:'点绿色薄荷块，或按数字 2 切换。'},
+   {title:'请你让一让。',copy:'让薄荷块向下滑，给珊瑚块腾出路。以后要移动哪一块，先点选它就好。',moves:[[1,2]],tip:'让薄荷块向下滑，或点「↓」。'}
+  ],
+  borrow:[
+   {title:'借你停一下。',copy:'薄荷块想停在中间一行。向上滑时，珊瑚块会挡住它，让它刚好停下来。',moves:[[1,0]],tip:'让薄荷块向上滑，看看它停在哪里。'},
+   {title:'停下来，就能转弯。',copy:'现在让薄荷块向右滑，涂好自己的圆点。另一块既能让路，也能帮你停靠。',moves:[[1,1]],tip:'向右滑动，点亮薄荷色圆点。'}
+  ],
+  portal:[
+   {title:'进这扇门，从那边出来。',copy:'相同字母的门互相连接。向右滑，传送后继续向右，遇到墙才停；整次只算一步。',moves:[[0,1]],tip:'向右滑，或按 → / D，看看方块从哪里出来。'},
+   {title:'整次传送，一起退回。',copy:'点撤销或按 Ctrl + Z，方块和这次传送留下的颜色都会恢复，放心尝试。',undo:true,tip:'点「↶ 撤销」，或按 Ctrl + Z。'},
+   {title:'方向不变，再拐个弯。',copy:'向右进门，再向下、向左归位。另一端被方块占住时，入口会暂时挡住你。',moves:[[0,1],[0,2],[0,3]],tip:'向右、向下，再向左。'}
+  ],
+  crumbly:[
+   {title:'先停一次，挡板会碎。',copy:'带裂纹的是一次性挡板。向右滑，方块会停在它前面，挡板随即碎掉。',moves:[[0,1]],tip:'向右滑，或按 → / D，撞碎这块挡板。'},
+   {title:'撤销，挡板也回来。',copy:'撞碎挡板也算一步。点撤销或按 Ctrl + Z，可以让方块、颜色和挡板一起恢复。',undo:true,tip:'点「↶ 撤销」，把挡板恢复。'},
+   {title:'这次穿过去。',copy:'连续向右两次：第一次撞停并拆掉挡板，第二次穿过。最后向下，涂好圆点后归位。',moves:[[0,1],[0,1],[0,2]],tip:'向右、向右，再向下。'}
+  ],
+  order:[
+   {title:'出口开了，先别急。',copy:'薄荷块还要帮忙停靠。先让珊瑚块向左，借它停在出口上方。',moves:[[0,3]],tip:'让珊瑚块向左滑，或按 ← / A。'},
+   {title:'帮完忙，再离开。',copy:'先让珊瑚块向下归位。再让薄荷块向右、向下，完成配合。',moves:[[0,2],[1,1],[1,2]],tip:'先按 ↓ / S；随后用 → / D、↓ / S 送走薄荷块。'}
+  ]
+ };
+ let mode='intro',step=0,lesson,state,selected=0,count=0,done=false,after=()=>{},gesture;
+ const current=()=>lessons[mode][step];
+ function setup(){
+  lesson=levels[mode==='portal'?40:mode==='crumbly'?30:mode==='intro'?0:mode==='switch'?3:mode==='order'?8:4];state=E.initial(lesson);selected=mode==='borrow'?1:0;count=0;done=false;gesture=null;
+  if(mode==='portal'&&step===1)state=E.move(lesson,state,0,1);
+  if(mode==='crumbly'&&step===1)state=E.move(lesson,state,0,1);
+  if(mode==='intro'&&step===1)state=E.move(lesson,state,0,1);
+  if(mode==='switch'&&step===1)selected=1;
+  if(mode==='borrow'&&step===1)state=E.move(lesson,state,1,0);
+  if(mode==='order'){for(const [id,d]of [[0,3],[0,0],[0,1],[1,2],[1,3],[1,0]])state=E.move(lesson,state,id,d);if(step===1)state=E.move(lesson,state,0,3);}
+  render();
+ }
+ function feedback(text){$('guide-feedback').textContent=text;}
+ function render(){
+  const c=current();$('guide-label').textContent=mode==='intro'?'开始之前 · 亲手试一试':mode==='switch'?'新朋友 · 两块一起玩':mode==='portal'?'新机关 · 传送门':mode==='crumbly'?'新机关 · 一次性挡板':mode==='order'?'离场顺序':'小小新发现 · 借位';
+  $('guide-title').textContent=c.title;$('guide-copy').textContent=c.copy;
+  $('guide-dots').innerHTML=lessons[mode].map((_,i)=>`<span class="${i===step?'active':i<step?'complete':''}"></span>`).join('');
+  $('guide-next').disabled=!done;$('guide-next').textContent=done?(step===lessons[mode].length-1?(mode==='intro'?'完成教程 →':'回到关卡 →'):'下一步 →'):'亲手试一试';
+  $('guide-prev').disabled=step===0;$('guide-undo').disabled=!c.undo||done;
+  document.querySelectorAll('[data-guide-dir]').forEach(b=>b.disabled=!!c.undo||done||c.select!==undefined);
+  feedback(done?'✓ 做到了！就是这样。':c.tip);syncInputDemo();draw();
+ }
+ function syncInputDemo(){
+  const c=current(),expected=!done&&c.moves?c.moves[count]?.[1]:undefined;dialog.dataset.input=inputMethod;dialog.dataset.demonstrating=done?'complete':c.undo?'undo':c.select!==undefined?'tap':'swipe';
+  inputTabs.querySelectorAll('button').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.guideInput===inputMethod)));
+  document.querySelectorAll('[data-guide-dir]').forEach(b=>b.classList.toggle('demo-key',Number(b.dataset.guideDir)===expected));
+  $('guide-undo').classList.toggle('demo-key',!!c.undo&&!done);
+  if(done)actionLegend.innerHTML='<span class="demo-success">✓ 操作完成，可以继续了</span>';
+  else if(c.undo)actionLegend.innerHTML='<kbd class="demo-combo">Ctrl</kbd><span>+</span><kbd class="demo-combo">Z</kbd><span class="demo-legend-text">或点撤销按钮</span>';
+  else if(c.select!==undefined)actionLegend.innerHTML='<kbd class="demo-combo">2</kbd><span class="demo-legend-text">或轻点薄荷块</span>';
+  else actionLegend.innerHTML=`<span class="demo-legend-text">向${directionNames[expected]}滑动，或按</span><kbd class="demo-combo">${arrowKeys[expected]}</kbd><span>/</span><kbd class="demo-combo">${letterKeys[expected]}</kbd>`;
+ }
+ function setInput(method){if(inputMethod===method)return;inputMethod=method;syncInputDemo();draw();}
+ inputTabs.addEventListener('click',e=>{const b=e.target.closest('[data-guide-input]');if(b)setInput(b.dataset.guideInput);});
+ function drawDemo(parts,S){
+  if(done)return;const c=current(),id=c.select??(c.undo?0:c.moves[count][0]),at=state.positions[id];if(at<0)return;
+  const x=at%lesson.width*S+26,y=Math.floor(at/lesson.width)*S+27,color=palette[lesson.pieces[id].color];
+  if(c.select!==undefined){parts.push(`<g class="guide-demo demo-tap" aria-hidden="true" pointer-events="none" transform="translate(${x+5} ${y+7})"><g class="hand-tap"><g transform="scale(.95)">${handArt}</g></g></g>`);return;}
+  if(mode==='portal'&&c.undo)return;
+  let dx=0,dy=0;
+  if(c.undo){const initial=lesson.pieces[0].cell;dx=(initial%lesson.width-at%lesson.width)*S;dy=(Math.floor(initial/lesson.width)-Math.floor(at/lesson.width))*S;}
+  else{const preview=E.move(lesson,state,id,c.moves[count][1]);if(!preview)return;const dest=preview.path.at(-1);dx=(dest%lesson.width-at%lesson.width)*S;dy=(Math.floor(dest/lesson.width)-Math.floor(at/lesson.width))*S;}
+  if(!c.undo){const preview=E.move(lesson,state,id,c.moves[count][1]);if(preview?.teleports?.length){const [sx,sy]=E.DIRS[c.moves[count][1]];
+   parts.push(`<g class="guide-demo" aria-hidden="true" pointer-events="none" transform="translate(${x} ${y})"><path class="demo-paint-trail" d="${window.StrokePortals.trail(lesson,at,preview,S)}" stroke="${color[0]}" stroke-width="17" stroke-linecap="round" fill="none"/><g class="portal-demo-motion"><rect x="-18" y="-21" width="36" height="36" rx="10" fill="${color[0]}" fill-opacity=".5" stroke="${color[2]}" stroke-width="1.2"/>${window.StrokeOrnaments.stamp(piecePatterns[id],lesson.pieces[id].color,0,-3,11,'#fffdf5')}</g><g class="swipe-hand portal-swipe-hand" style="--swipe-x:${sx*35}px;--swipe-y:${sy*35}px"><g transform="translate(7 7) scale(.95)">${handArt}</g></g></g>`);return;}}
+  parts.push(`<g class="guide-demo" data-demo-direction="${c.undo?'undo':c.moves[count][1]}" aria-hidden="true" pointer-events="none" transform="translate(${x} ${y})"><path class="demo-paint-trail" d="M0 0L${dx} ${dy}" stroke="${color[0]}" stroke-width="17" stroke-linecap="round" fill="none"/><g class="demo-motion" style="--demo-dx:${dx}px;--demo-dy:${dy}px"><rect x="-18" y="-21" width="36" height="36" rx="10" fill="${color[0]}" fill-opacity=".45" stroke="${color[2]}" stroke-width="1.2"/>${window.StrokeOrnaments.stamp(piecePatterns[id],lesson.pieces[id].color,0,-3,11,'#fffdf5')}${c.undo?'':`<g class="swipe-hand" transform="translate(7 7) scale(.95)">${handArt}</g>`}</g></g>`);
+ }
+ function draw(){
+  const S=52,parts=[];const w=lesson.width,h=lesson.height;$('guide-board').setAttribute('viewBox',`0 0 ${w*S} ${h*S+4}`);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const at=y*w+x,wall=lesson.map[y][x]==='#',paint=state.paint[at];parts.push(`<rect x="${x*S+2}" y="${y*S+3}" width="48" height="48" rx="8" fill="${wall?'#d5dbc9':paint?palette[paint][1]:'#fffdf5'}" stroke="${wall?'#c8d0bc':'#e3e5d7'}"/>`);}
+  for(const [i,p]of lesson.portals.entries())for(const door of [p.a,p.b])parts.push(window.StrokePortals.tile(door.x*S,door.y*S,S,i,false,door.cell));
+  for(const [i,b]of lesson.barriers.entries()){const broken=!!((state.broken||0)&(1<<i));parts.push(window.StrokeBarriers.tile(b.x*S,b.y*S,S,broken,false,b.cell));}
+  for(const t of lesson.targets){const x=t.x*S+26,y=t.y*S+27,c=palette[t.color],ok=state.paint[t.cell]===t.color;parts.push(`<circle cx="${x}" cy="${y}" r="11" fill="${ok?c[0]:'#fffdf5'}" stroke="${c[0]}" stroke-width="2"/><text x="${x}" y="${y+5}" text-anchor="middle" fill="${ok?'#fffdf5':c[0]}" font-size="14">${ok?'✓':c[3]}</text>`);}
+  for(const e of lesson.exits){const x=e.x*S,y=e.y*S,c=palette[e.color],ready=E.exitReady(lesson,state);parts.push(`<rect x="${x+8}" y="${y+10}" width="36" height="34" rx="9" fill="${c[0]}" opacity="${ready?1:.55}"/>${ready?`<text x="${x+26}" y="${y+35}" text-anchor="middle" font-size="25" fill="#fffdf5">↗</text>`:`<path d="M${x+21} ${y+26}v-4a5 5 0 0 1 10 0v4" fill="none" stroke="white" stroke-width="2"/><rect x="${x+18}" y="${y+26}" width="16" height="12" rx="3" fill="none" stroke="white" stroke-width="2"/>`}`);}
+  lesson.pieces.forEach((p,id)=>{const at=state.positions[id];if(at<0)return;const x=at%w*S,y=Math.floor(at/w)*S,c=palette[p.color];parts.push(`<g role="button" tabindex="0" data-guide-piece="${id}" aria-label="教程${id===0?'珊瑚':'薄荷'}块${selected===id?'，已选中':''}">${selected===id?`<rect x="${x+4}" y="${y+3}" width="44" height="46" rx="13" fill="none" stroke="${c[2]}" stroke-width="2"/>`:''}<rect x="${x+8}" y="${y+10}" width="36" height="36" rx="10" fill="${c[2]}"/><rect x="${x+8}" y="${y+6}" width="36" height="35" rx="10" fill="${c[0]}"/>${window.StrokeOrnaments.stamp(piecePatterns[id],p.color,x+26,y+24,11,'#fffdf5')}</g>`);});
+  drawDemo(parts,S);$('guide-board').innerHTML=parts.join('');
+  if(!done&&current().moves){const [id,d]=current().moves[count],demo=E.move(lesson,state,id,d);const ghost=$('guide-board').querySelector('.portal-demo-motion');if(ghost&&demo?.teleports?.length&&!matchMedia('(prefers-reduced-motion: reduce)').matches)ghost.animate(window.StrokePortals.frames(lesson,state.positions[id],demo,52,state.positions[id],true),{duration:2600,iterations:Infinity,easing:'linear'});if(demo?.cracked>=0)$('guide-board').querySelector('[data-barrier="'+demo.cracked+'"]').classList.add('guide-barrier-demo');}
+ }
+ function choose(id){if(done||!lesson.pieces[id]||state.positions[id]<0)return;selected=id;if(current().select===id)done=true;render();}
+ function move(dir){
+  if(done)return;const c=current();if(c.undo){feedback('这一步先点「撤销」，把刚才的一笔退回来。');return;}if(c.select!==undefined){feedback('先点一下薄荷块，切换到另一支画笔。');return;}
+  const [id,expected]=c.moves[count];if(id!==selected){feedback(`先点选${id===0?'珊瑚':'薄荷'}块，再试着滑动。`);return;}if(dir!==expected){feedback(c.tip);return;}
+  const previous=state,next=E.move(lesson,state,id,dir);if(!next)return;state=next;count++;done=count===c.moves.length;if(next.exited&&!done)selected=c.moves[count][0];render();animatePiece(id,previous.positions[id],next.positions[id],next);
+ }
+ function animatePiece(id,from,to,next){const p=$('guide-board').querySelector(`[data-guide-piece="${id}"]`);if(!p||to<0||matchMedia('(prefers-reduced-motion: reduce)').matches)return;if(next?.teleports?.length){p.animate(window.StrokePortals.frames(lesson,from,next,52),{duration:600,easing:'linear'});return;}if(mode==='portal'&&!next){p.animate([{opacity:0},{opacity:1}],{duration:260});return;}const dx=(from%lesson.width-to%lesson.width)*52,dy=(Math.floor(from/lesson.width)-Math.floor(to/lesson.width))*52;p.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:260,easing:'cubic-bezier(.2,.7,.2,1)'});}
+ function flashKey(dir){document.querySelectorAll(`[data-guide-dir="${dir}"]`).forEach(b=>{if(b.offsetParent)b.animate([{background:'#49673c',color:'#fffdf5',transform:'translateY(3px)'},{background:'#fffdf5',color:'#435c39',transform:'translateY(0)'}],{duration:220,easing:'ease-out'});});}
+ function undo(){if(current().undo&&!done){const previous=state;state=E.initial(lesson);done=true;render();animatePiece(0,previous.positions[0],state.positions[0]);}}
+ function finish(){seen[mode]=true;try{localStorage.setItem(storageKey,JSON.stringify(seen));}catch{}dialog.close();const callback=after;after=()=>{};callback();}
+ function open(key,callback=()=>{}){if(dialog.open)return;mode=key;step=0;after=callback;setup();dialog.showModal();}
+ $('guide-next').addEventListener('click',()=>{if(!done)return;if(step===lessons[mode].length-1)finish();else{step++;setup();}});
+ $('guide-prev').addEventListener('click',()=>{if(step>0){step--;setup();}});
+ $('guide-skip').addEventListener('click',finish);dialog.addEventListener('cancel',e=>{e.preventDefault();finish();});
+ $('guide-undo').addEventListener('click',undo);
+ document.querySelectorAll('[data-guide-dir]').forEach(b=>b.addEventListener('click',()=>{const dir=Number(b.dataset.guideDir);move(dir);flashKey(dir);}));
+ $('guide-board').addEventListener('pointerdown',e=>{setInput('swipe');const p=e.target.closest('[data-guide-piece]');if(p)choose(Number(p.dataset.guidePiece));gesture={x:e.clientX,y:e.clientY,id:e.pointerId};$('guide-board').setPointerCapture(e.pointerId);});
+ $('guide-board').addEventListener('pointerup',e=>{if(!gesture||gesture.id!==e.pointerId)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;gesture=null;if(Math.max(Math.abs(dx),Math.abs(dy))>=18)move(Math.abs(dx)>Math.abs(dy)?dx>0?1:3:dy>0?2:0);});
+ $('guide-board').addEventListener('pointercancel',()=>gesture=null);
+ document.addEventListener('keydown',e=>{if(!dialog.open||e.altKey)return;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.stopImmediatePropagation();setInput('keyboard');undo();return;}
+  if(e.ctrlKey||e.metaKey)return;
+  if(e.key==='1'||e.key==='2'){e.preventDefault();e.stopImmediatePropagation();setInput('keyboard');choose(Number(e.key)-1);return;}
+  const dir={ArrowUp:0,ArrowRight:1,ArrowDown:2,ArrowLeft:3,w:0,d:1,s:2,a:3}[e.key.length===1?e.key.toLowerCase():e.key];if(dir!==undefined){e.preventDefault();e.stopImmediatePropagation();setInput('keyboard');move(dir);flashKey(dir);}
+  const p=e.target.closest?.('[data-guide-piece]');if(p&&(e.key===' '||e.key==='Enter')){e.preventDefault();choose(Number(p.dataset.guidePiece));}
+ });
+ window.StrokeGuide={open,setPatterns:p=>{piecePatterns=p.slice();},seen:key=>!!seen[key],setPalette:p=>{for(let i=1;i<=2;i++)for(let j=0;j<3;j++)palette[i][j]=p[(i-1)*3+j];}};
+})();
+
+</script><script>
+(function(root){
+ 'use strict';
+ let animations=[],palette,patterns;
+ const $=id=>document.getElementById(id);
+ const left='M210 106 C166 41 66 58 66 128 C66 178 128 218 197 254',right='M210 106 C254 41 354 58 354 128 C354 178 292 218 223 254';
+ function art(){
+  const stamp=(i)=>window.StrokeOrnaments.stamp(patterns[i],i+1,0,-2,11,'#fffdf5');
+  const stars=[[56,57],[356,44],[32,206],[378,209],[125,24],[299,282]];
+  return '<svg viewBox="0 0 420 300" role="img" aria-label="两块方块一起画出一颗心的通关动画"><defs><radialGradient id="finale-glow"><stop stop-color="#fffdf5"/><stop offset="1" stop-color="#e8eddc" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="158" rx="190" ry="140" fill="url(#finale-glow)"/>'+stars.map(([x,y],i)=>'<path class="finale-spark" data-spark="'+i+'" d="M'+x+' '+(y-6)+'v12m-6-6h12" fill="none" stroke="'+(i%2?palette[1].hex:palette[0].hex)+'" stroke-width="2" stroke-linecap="round"/>').join('')+'<g class="finale-gate"><ellipse cx="210" cy="106" rx="22" ry="27" fill="#dde9f380" stroke="#8da4c3" stroke-width="2"/><ellipse cx="210" cy="106" rx="15" ry="19" fill="none" stroke="#8da4c3" stroke-width="1"/></g>'+[left,right].map((d,i)=>'<path class="finale-route" data-route="'+i+'" d="'+d+'" fill="none" stroke="'+palette[i].hex+'" stroke-opacity=".7" stroke-width="10" stroke-linecap="round"/>').join('')+[0,1].map(i=>'<g class="finale-block" data-final-piece="'+i+'"><rect x="-18" y="-17" width="36" height="37" rx="10" fill="'+palette[i].dark+'"/><rect x="-18" y="-21" width="36" height="34" rx="10" fill="'+palette[i].hex+'"/><path d="M-10-14h10" stroke="#fffdf5" stroke-opacity=".4" stroke-width="2.5" stroke-linecap="round"/>'+stamp(i)+'</g>').join('')+'</svg>';
+ }
+ function cancel(){for(const a of animations)a.cancel();animations=[];}
+ function play(){
+  cancel();$('finale-art').innerHTML=art();
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const run=(el,frames,options)=>{const a=el.animate(frames,options);animations.push(a);return a;};
+  const routes=[...$('finale-art').querySelectorAll('[data-route]')];
+  routes.forEach((path,i)=>{
+   const length=path.getTotalLength(),block=$('finale-art').querySelector('[data-final-piece="'+i+'"]'),end=path.getPointAtLength(length);
+   block.style.transform='translate('+end.x+'px,'+end.y+'px)';path.style.strokeDasharray=String(length);
+   if(reduced)return;
+   const delay=350+i*180,frames=Array.from({length:65},(_,n)=>{const p=path.getPointAtLength(length*n/64);return {transform:'translate('+p.x+'px,'+p.y+'px)',opacity:n===0?0:1,offset:n/64};});
+   run(block,frames,{duration:3500,delay,easing:'linear',fill:'both'});
+   run(path,[{strokeDashoffset:length},{strokeDashoffset:0}],{duration:3500,delay,easing:'linear',fill:'both'});
+   run(block,[{scale:'1'},{scale:'1.12',offset:.5},{scale:'1'}],{duration:500,delay:delay+3500,fill:'none',easing:'ease-out'});
+  });
+  if(reduced)return;
+  run($('finale-art').querySelector('.finale-gate'),[{opacity:0},{opacity:.9,offset:.2},{opacity:.3,offset:.8},{opacity:0}],{duration:1600,fill:'both'});
+  $('finale-art').querySelectorAll('.finale-spark').forEach((el,i)=>run(el,[{opacity:0},{opacity:.9,offset:.35},{opacity:.35}],{duration:800,delay:3000+i*90,fill:'both'}));
+ }
+ function open(nextPalette,nextPatterns){palette=nextPalette.map(c=>({...c}));patterns=nextPatterns.slice();play();if(!$('finale-dialog').open)$('finale-dialog').showModal();}
+ $('finale-replay').addEventListener('click',play);
+ $('finale-close').addEventListener('click',()=>$('finale-dialog').close());
+ $('finale-done').addEventListener('click',()=>$('finale-dialog').close());
+ $('finale-dialog').addEventListener('close',cancel);
+ root.StrokeFinale={open};
+})(window);
+
+</script><script>
+(() => {
+ 'use strict';
+ const P=window.StrokePortals,B=window.StrokeBarriers,O=window.StrokeOrnaments,W=window.StrokeEconomy,E=window.Stroke,levels=window.StrokeLevels.map(E.prepare),$=id=>document.getElementById(id);
+ const colors={1:{name:'珊瑚',hex:'#e97d68',light:'#f4c8b8',dark:'#c75f4d',symbol:'✦'},2:{name:'薄荷',hex:'#4ba994',light:'#b9ddd0',dark:'#35816f',symbol:'◆'}};
+ const directions=['上','右','下','左'];
+ const finale=()=>window.StrokeFinale.open([colors[1],colors[2]],wallet.piecePatterns);
+ $('credits').addEventListener('click',()=>$('credits-dialog').showModal());
+ $('credits-close').addEventListener('click',()=>$('credits-dialog').close());
+ let index=0,state,selected=0,history=[],hintMove=null,animating=false,sound=false,audioContext,toastTimer,animationTimer;
+ let completed={},sessions={},screen='home';
+ try{const saved=JSON.parse(localStorage.getItem('last-stroke-easy-v2')||'{}');completed=saved.completed||{};index=Math.max(0,Math.min(levels.length-1,Number(saved.index)||0));}catch{}
+ let wallet=W.create();try{wallet=W.normalize(JSON.parse(localStorage.getItem('last-stroke-wallet-v1')||'null'));}catch{}
+ for(const [i,moves]of Object.entries(completed))if(levels[i]&&Number.isInteger(moves)&&moves>0)wallet=W.reward(wallet,i,moves,levels[i].par).data;
+ const saveWallet=()=>{try{localStorage.setItem('last-stroke-wallet-v1',JSON.stringify(wallet));}catch{}};saveWallet();
+ function applySkin(){const p=W.skins.find(s=>s.id===wallet.equipped).palette;window.StrokeGuide.setPalette(p);window.StrokeGuide.setPatterns(wallet.piecePatterns);for(let i=1;i<=2;i++){[colors[i].hex,colors[i].light,colors[i].dark]=p.slice((i-1)*3,i*3);}for(const [name,value]of Object.entries({'--coral':p[0],'--mint':p[3],'--coral-light':p[1],'--mint-light':p[4]}))document.documentElement.style.setProperty(name,value);document.querySelector('.coral-piece').innerHTML=O.svg(wallet.piecePatterns[0],1);document.querySelector('.mint-piece').innerHTML=O.svg(wallet.piecePatterns[1],2);}
+ applySkin();
+ const starMarkup=n=>'<span class="star-row" aria-label="'+n+'星">'+[1,2,3].map(i=>'<span aria-hidden="true" class="'+(i<=n?'lit':'')+'">★</span>').join('')+'</span>';
+ let shopTab='colors',patternPiece=0,pendingPattern=null,patternDrag=null,suppressPatternClick=false;
+ function renderShop(){ $('coin-balance').textContent=wallet.coins;
+ $('color-panel').hidden=shopTab!=='colors';$('pattern-panel').hidden=shopTab!=='patterns';document.querySelectorAll('[data-shop-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.shopTab===shopTab)));
+ $('pattern-piece').innerHTML=[0,1].map(i=>{const pending=pendingPattern?.piece===i,id=pending?pendingPattern.id:wallet.piecePatterns[i];return '<button class="pattern-target '+(pending?'previewing':'')+'" data-pattern-piece="'+i+'" aria-label="方块'+(i+1)+'，'+(pending?'试搭':'当前')+W.patterns.find(p=>p.id===id).name+'" aria-pressed="'+(i===patternPiece)+'"><span>方块 '+(i+1)+'</span><span class="pattern-block" style="--swatch:'+colors[i+1].hex+'">'+O.svg(id,i+1)+'</span><small>'+(pending?'试搭中':i===0?'✦':'◆')+'</small></button>';}).join('');
+ const previewId=pendingPattern?.piece===patternPiece?pendingPattern.id:wallet.piecePatterns[patternPiece];
+ $('pattern-list').innerHTML=W.patterns.map(p=>{const owned=wallet.ownedPatterns.includes(p.id),active=previewId===p.id;return '<button class="pattern-tile '+(active?'selected':'')+'" data-pattern="'+p.id+'" aria-label="试搭'+p.name+'" aria-pressed="'+active+'"><span class="pattern-mini" style="color:'+colors[patternPiece+1].dark+'">'+O.svg(p.id,patternPiece+1)+'</span><span class="pattern-name">'+p.name+'</span><small>'+(owned?'已拥有':'<i class="tiny-coin" aria-hidden="true"></i>'+p.price)+'</small></button>';}).join('');
+ const pending=pendingPattern&&W.patterns.find(p=>p.id===pendingPattern.id);
+ $('pattern-confirm').innerHTML=pending?'<span>'+pending.name+' <small>· 方块 '+(pendingPattern.piece+1)+'</small></span><button id="purchase-pattern">购买 <i class="tiny-coin" aria-hidden="true"></i>'+pending.price+'</button>':'<span class="pattern-confirm-empty">先试搭，再购买</span>';
+ $('skin-list').innerHTML=W.skins.map(s=>{const owned=wallet.owned.includes(s.id),active=wallet.equipped===s.id;return '<article class="skin-card '+(active?'equipped':'')+'"><div class="skin-swatch" aria-hidden="true"><span style="--swatch:'+s.palette[0]+'">'+O.svg(wallet.piecePatterns[0],1)+'</span><span style="--swatch:'+s.palette[3]+'">'+O.svg(wallet.piecePatterns[1],2)+'</span></div><h3>'+s.name+'</h3><button data-skin="'+s.id+'" '+(active?'disabled':'')+' aria-label="'+(active?'已使用':owned?'使用':'购买')+s.name+'">'+(active?'使用中':owned?'使用':s.price+' 金币')+'</button></article>';}).join('');}
+ document.querySelectorAll('[data-shop-tab]').forEach(b=>b.addEventListener('click',()=>{shopTab=b.dataset.shopTab;$('shop-status').textContent='';renderShop();}));
+ function tryPattern(id,piece){const p=W.patterns.find(p=>p.id===id);if(!p)return;patternPiece=piece;
+  if(wallet.ownedPatterns.includes(id)){const result=W.buyPattern(wallet,id,piece);wallet=result.data;pendingPattern=null;saveWallet();applySkin();render();$('shop-status').textContent='已装备到方块 '+(piece+1);}
+  else{pendingPattern={id,piece};$('shop-status').textContent='';}renderShop();
+ }
+ $('pattern-piece').addEventListener('click',e=>{const b=e.target.closest('[data-pattern-piece]');if(b){patternPiece=Number(b.dataset.patternPiece);pendingPattern=null;$('shop-status').textContent='';renderShop();}});
+ $('pattern-list').addEventListener('click',e=>{if(suppressPatternClick){suppressPatternClick=false;return;}const id=e.target.closest('[data-pattern]')?.dataset.pattern;if(id)tryPattern(id,patternPiece);});
+ $('pattern-confirm').addEventListener('click',e=>{if(!e.target.closest('#purchase-pattern')||!pendingPattern)return;const result=W.buyPattern(wallet,pendingPattern.id,pendingPattern.piece);if(result.error){$('shop-status').textContent=result.error;return;}wallet=result.data;pendingPattern=null;saveWallet();applySkin();renderShop();render();$('shop-status').textContent='购买成功，已装备';});
+ function endPatternDrag(){document.querySelector('.pattern-drag-ghost')?.remove();document.querySelectorAll('.pattern-drop-hover').forEach(b=>b.classList.remove('pattern-drop-hover'));patternDrag=null;}
+ $('pattern-list').addEventListener('pointerdown',e=>{if(e.button!==0)return;const b=e.target.closest('[data-pattern]');if(!b)return;patternDrag={id:b.dataset.pattern,pointer:e.pointerId,x:e.clientX,y:e.clientY,started:false};b.setPointerCapture(e.pointerId);});
+ $('pattern-list').addEventListener('pointermove',e=>{if(!patternDrag||patternDrag.pointer!==e.pointerId)return;const d=patternDrag;if(!d.started&&Math.hypot(e.clientX-d.x,e.clientY-d.y)<6)return;
+  if(!d.started){d.started=true;const ghost=document.createElement('span');ghost.className='pattern-drag-ghost';ghost.innerHTML=O.svg(d.id,patternPiece+1);ghost.style.color=colors[patternPiece+1].dark;$('shop-dialog').append(ghost);}
+  const ghost=document.querySelector('.pattern-drag-ghost');ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px';
+  const hit=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-pattern-piece]');document.querySelectorAll('[data-pattern-piece]').forEach(b=>b.classList.toggle('pattern-drop-hover',b===hit));
+ });
+ $('pattern-list').addEventListener('pointerup',e=>{if(!patternDrag||patternDrag.pointer!==e.pointerId)return;const d=patternDrag,hit=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-pattern-piece]');endPatternDrag();if(d.started){suppressPatternClick=true;setTimeout(()=>suppressPatternClick=false,0);if(hit)tryPattern(d.id,Number(hit.dataset.patternPiece));}});
+ $('pattern-list').addEventListener('pointercancel',endPatternDrag);
+ $('shop-dialog').addEventListener('close',()=>{endPatternDrag();pendingPattern=null;suppressPatternClick=false;});
+ $('skin-shop').addEventListener('click',()=>{$('shop-status').textContent='';renderShop();$('shop-dialog').showModal();});
+ $('shop-close').addEventListener('click',()=>$('shop-dialog').close());
+ $('skin-list').addEventListener('click',e=>{const id=e.target.closest('[data-skin]')?.dataset.skin;if(!id)return;const owned=wallet.owned.includes(id),result=W.buy(wallet,id);if(result.error){$('shop-status').textContent=result.error;return;}wallet=result.data;saveWallet();applySkin();renderShop();render();$('shop-status').textContent=owned?'已更换皮肤':'购买成功，已使用';});
+ document.body.dataset.levelCount=String(levels.length);
+ const level=()=>levels[index];
+ const save=()=>{try{localStorage.setItem('last-stroke-easy-v2',JSON.stringify({completed,index}));}catch{}};
+ function changeScreen(next){screen=next;document.body.dataset.screen=next;$('home-screen').hidden=next!=='home';$('level-screen').hidden=next!=='levels';$('game-content').hidden=next!=='game';window.scrollTo({top:0,behavior:'instant'});}
+ function showHome(){changeScreen('home');}
+ function preview(l){let shapes='';const size=12;for(let y=0;y<l.height;y++)for(let x=0;x<l.width;x++)shapes+=`<rect x="${x*size+1}" y="${y*size+1}" width="10" height="10" rx="2" fill="${l.map[y][x]==='#'?'#d6ddca':'#fffdf5'}"/>`;for(const [i,p]of l.portals.entries())for(const door of [p.a,p.b])shapes+=P.tile(door.x*size,door.y*size,size,i,false,door.cell);for(const b of l.barriers)shapes+=B.tile(b.x*size,b.y*size,size,false,false,b.cell);for(const p of l.pieces)shapes+=`<rect x="${p.x*size+2}" y="${p.y*size+2}" width="8" height="8" rx="2" fill="${colors[p.color].hex}"/>`;return `<svg viewBox="0 0 ${l.width*size} ${l.height*size}" aria-hidden="true">${shapes}</svg>`;}
+ function updateLevels(){$('levels').innerHTML=levels.map((l,i)=>{const rating=completed[i]?W.stars(completed[i],l.par):0;return `<button class="level-card ${completed[i]?'completed':''}" data-level="${i}" aria-label="第${i+1}关${completed[i]?'，已完成，'+rating+'星':''}"><span class="level-card-number">${String(i+1).padStart(2,'0')}</span>${preview(l)}${starMarkup(rating)}</button>`;}).join('');}
+ function showLevels(){updateLevels();changeScreen('levels');}
+ function enterLevel(i){changeScreen('game');load(i);}
+ function tutorialFor(i){return levels[i].tutorial||(i===3?'switch':i===4?'borrow':'intro');}
+ function requestLevel(i){enterLevel(i);const key=tutorialFor(i);if(key!=='intro'&&!window.StrokeGuide.seen(key))window.StrokeGuide.open(key);}
+ function start(){if(!window.StrokeGuide.seen('intro'))window.StrokeGuide.open('intro',showLevels);else showLevels();}
+ function needsUndo(){return !!state.undoRequired||E.stranded(level(),state);}
+ function syncControls(){const l=level(),done=E.won(l,state)||needsUndo();document.querySelectorAll('[data-dir]').forEach(b=>b.disabled=done||animating||!E.move(l,state,selected,Number(b.dataset.dir)));$('hint').disabled=done||animating;}
+ function note(text,duration=3300){clearTimeout(toastTimer);$('toast').textContent=text;$('toast').classList.add('visible');toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),duration);}
+ function tone(win=false){if(!sound)return;try{audioContext ||= new (window.AudioContext||window.webkitAudioContext)();audioContext.resume();const notes=win?[523.25,659.25,783.99]:[selected===0?392:493.88];notes.forEach((freq,i)=>{const o=audioContext.createOscillator(),g=audioContext.createGain(),t=audioContext.currentTime+i*.12;o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.08,t+.015);g.gain.exponentialRampToValueAtTime(.001,t+.21);o.connect(g);g.connect(audioContext.destination);o.start(t);o.stop(t+.23);});}catch{}}
+ function stash(){if(state)sessions[index]={state,history:history.slice(),selected};}
+ function load(i){stash();index=i;const old=sessions[i];state=old?.state||E.initial(level());history=old?.history.slice()||[];selected=old?.selected??0;hintMove=null;animating=false;clearTimeout(animationTimer);$('toast').classList.remove('visible');save();render();}
+ function reset(){state=E.initial(level());history=[];selected=0;hintMove=null;animating=false;clearTimeout(animationTimer);delete sessions[index];render();note('已重置',1200);}
+ function undo(){if(!history.length)return;const prev=history.pop();state=prev.state;selected=prev.selected;hintMove=null;animating=false;clearTimeout(animationTimer);render();note('已撤销',1200);}
+ function select(id){if(!level().pieces[id]||state.positions[id]<0||E.won(level(),state))return;selected=id;hintMove=null;render();}
+ function move(dir){
+  if(animating||E.won(level(),state)||needsUndo())return;
+  const l=level(),old=state,next=E.move(l,state,selected,dir);
+  if(!next){const at=state.positions[selected],[dx,dy]=E.DIRS[dir],cell=at+dx+dy*l.width;note(l.exits.some(e=>e.cell===cell&&e.color===l.pieces[selected].color)&&!E.exitReady(l,state)?'先把圆点涂好，出口就会打开。':'这边被挡住了，换个方向试试。',2200);return;}
+  const moved=selected;history.push({state:old,selected});state=next;hintMove=null;animating=true;
+  if(next.exited){const available=state.positions.findIndex(p=>p>=0);if(available>=0)selected=available;}
+  const win=E.won(l,state);if(!win&&(state.positions.some(p=>p<0)||l.barriers.length||l.portals.length)&&!E.solve(l,state))state={...state,undoRequired:true};
+  if(win){const payout=W.reward(wallet,index,state.moves,l.par);wallet=payout.data;state={...state,reward:{stars:payout.stars,amount:payout.amount}};saveWallet();completed[index]=Math.min(completed[index]??Infinity,state.moves);save();}
+  render();tone(win);
+  const piece=document.querySelector(`[data-piece="${moved}"]`);
+  const from=old.positions[moved],to=next.path.at(-1),duration=next.teleports?.length?Math.min(750,300+next.path.length*28+next.teleports.length*100):240;
+  if(piece&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const x=(from%l.width-to%l.width)*64,y=(Math.floor(from/l.width)-Math.floor(to/l.width))*64;piece.animate(next.teleports?.length?P.frames(l,from,next):next.cracked>=0&&from===to?[{transform:'translate(0,0)'},{transform:'translate('+(E.DIRS[dir][0]*7)+'px,'+(E.DIRS[dir][1]*7)+'px)'},{transform:'translate(0,0)'}]:[{transform:`translate(${x}px,${y}px)`},{transform:'translate(0,0)'}],{duration,easing:'cubic-bezier(.2,.7,.2,1)'});}
+  const finishedState=state,finishedIndex=index;
+  animationTimer=setTimeout(()=>{animating=false;renderBoard();syncControls();if(win&&finishedIndex===levels.length-1&&index===finishedIndex&&state===finishedState&&screen==='game'&&!document.querySelector('dialog[open]'))finale();},duration);
+  if(!E.exitReady(l,old)&&E.exitReady(l,state)&&!win)note('出口已打开',1600);
+ }
+ function shape(color,cx,cy,size=8,stroke='none'){return color===1?`<path d="M ${cx} ${cy-size} Q ${cx+size*.2} ${cy-size*.2} ${cx+size} ${cy} Q ${cx+size*.2} ${cy+size*.2} ${cx} ${cy+size} Q ${cx-size*.2} ${cy+size*.2} ${cx-size} ${cy} Q ${cx-size*.2} ${cy-size*.2} ${cx} ${cy-size}Z" fill="${stroke}"/>`:`<path d="M ${cx} ${cy-size} L ${cx+size} ${cy} L ${cx} ${cy+size} L ${cx-size} ${cy}Z" fill="${stroke}"/>`;}
+ function renderBoard(){
+  const l=level(),S=64,pad=12,parts=[];
+  $('board').setAttribute('viewBox',`${-pad} ${-pad-3} ${l.width*S+pad*2} ${l.height*S+pad*2+10}`);
+  parts.push(`<defs><filter id="block-shadow" x="-50%" y="-50%" width="200%" height="220%"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#344730" flood-opacity=".14"/></filter></defs>`);
+  // A tiled frame keeps walls and traversable cells visually distinct.
+  for(let y=0;y<l.height;y++)for(let x=0;x<l.width;x++){
+   const cell=y*l.width+x,px=x*S,py=y*S;
+   if(l.map[y][x]==='#'){
+    parts.push(`<rect x="${px+2}" y="${py+7}" width="60" height="57" rx="10" class="wall-side"/><rect x="${px+2}" y="${py+1}" width="60" height="57" rx="10" class="wall-top"/><path d="M${px+15} ${py+14}h15" stroke="#e4e8da" stroke-width="2" stroke-linecap="round" opacity=".65"/>`);
+   }else{
+    const p=state.paint[cell];parts.push(`<rect x="${px+1}" y="${py+2}" width="62" height="61" rx="8" class="floor-tile paint-tile" fill="${p?colors[p].light:'#f8f8ef'}"/>`);
+    if(p)parts.push(`<path d="M${px+11} ${py+47}h${24+(cell%3)*6}" stroke="${colors[p].hex}" opacity=".15" stroke-width="4" stroke-linecap="round"/>`);
+   }
+  }
+  for(const [i,p]of l.portals.entries())for(const door of [p.a,p.b])parts.push(P.tile(door.x*S,door.y*S,S,i,animating&&state.teleports?.some(h=>h.from===door.cell||h.to===door.cell),door.cell));
+  for(const [i,b]of l.barriers.entries())parts.push(B.tile(b.x*S,b.y*S,S,!!((state.broken||0)&(1<<i)),animating&&state.cracked===b.cell,b.cell));
+  for(const t of l.targets){const c=colors[t.color],x=t.x*S+32,y=t.y*S+32,ok=state.paint[t.cell]===t.color;
+   parts.push(`<g ${ok?'class="goal-correct"':''}><title>${c.name}圆点${ok?'，已锁色':'，等待上色'}</title><circle cx="${x}" cy="${y}" r="15" fill="${ok?c.hex:'#fffdf5'}" stroke="${c.hex}" stroke-width="2.5"/>${ok?`<path d="M${x-6} ${y}l4 4 8-9" fill="none" stroke="#fffdf5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`:shape(t.color,x,y,6,c.hex)}</g>`);
+  }
+  const ready=E.exitReady(l,state);
+  for(const e of l.exits){const c=colors[e.color],x=e.x*S,y=e.y*S;parts.push(`<g class="exit ${ready?'open':'closed'}"><title>${c.name}出口${ready?'，已打开':'，涂完全部圆点后打开'}</title><rect x="${x+7}" y="${y+8}" width="50" height="48" rx="13" fill="${c.dark}" opacity="${ready?1:.5}"/><rect x="${x+11}" y="${y+11}" width="42" height="39" rx="10" fill="${c.hex}" opacity="${ready?1:.65}"/>${ready?`<path d="M${x+22} ${y+39}l18-18m-13 0h13v13" stroke="#fffdf5" stroke-width="3.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`:`<rect x="${x+23}" y="${y+27}" width="18" height="15" rx="4" fill="none" stroke="#fffdf5" stroke-width="2.5"/><path d="M${x+27} ${y+27}v-5a5 5 0 0 1 10 0v5" fill="none" stroke="#fffdf5" stroke-width="2.5"/><circle cx="${x+32}" cy="${y+34}" r="1.5" fill="#fffdf5"/>`}${shape(e.color,x+17,y+17,3,'#fffdf5')}</g>`);}
+  l.pieces.forEach((p,id)=>{let at=state.positions[id];if(at<0)return;const c=colors[p.color],x=at%l.width*S,y=Math.floor(at/l.width)*S,isSelected=id===selected;
+   parts.push(`<g class="piece" data-piece="${id}" role="button" tabindex="0" aria-label="${c.name}块${isSelected?'，已选中':''}" aria-pressed="${isSelected}"><rect class="piece-outline" x="${x+4}" y="${y+3}" width="56" height="58" rx="17" fill="none" stroke="${isSelected?c.dark:'transparent'}" stroke-width="2"/><g filter="url(#block-shadow)"><rect x="${x+10}" y="${y+13}" width="44" height="43" rx="12" fill="${c.dark}"/><rect x="${x+10}" y="${y+7}" width="44" height="43" rx="12" fill="${c.hex}"/><path d="M${x+19} ${y+15}h14" stroke="#fffdf5" stroke-opacity=".32" stroke-width="3" stroke-linecap="round"/>${O.stamp(wallet.piecePatterns[id],p.color,x+32,y+29,13,'#fff7e8')}${wallet.piecePatterns[id]!=='original'?shape(p.color,x+49,y+45,3,c.dark):''}</g></g>`);
+  });
+  if(hintMove){const [id,d]=hintMove,at=state.positions[id],x=at%l.width*S+32,y=Math.floor(at/l.width)*S+32,[dx,dy]=E.DIRS[d];parts.push(`<g class="hint-arrow"><text x="${x+dx*38}" y="${y+dy*38+8}" text-anchor="middle" fill="#293b35" font-size="28" font-family="Arial" font-weight="bold">${['↑','→','↓','←'][d]}</text></g>`);}
+  $('board').innerHTML=parts.join('');$('board').dataset.busy=String(animating);
+ }
+ function render(){
+  const l=level(),correct=l.targets.filter(t=>state.paint[t.cell]===t.color).length;
+  $('move-count').textContent=String(state.moves);
+  $('level-number').innerHTML=`<small>关卡</small><b>${String(index+1).padStart(2,'0')}</b>`;
+  $('target-progress').innerHTML=`${correct} <em>/ ${l.targets.length}</em>`;
+  const c=colors[l.pieces[selected].color];$('pad-piece').style.color=c.hex;$('pad-piece').innerHTML=O.svg(wallet.piecePatterns[selected],l.pieces[selected].color);
+  $('undo').disabled=!history.length;const won=E.won(l,state),dead=needsUndo();syncControls();
+  updateLevels();
+  renderBoard();$('outcome').hidden=!(won||dead);
+  if(won){$('outcome').innerHTML=`<h3>完成</h3>${starMarkup(W.stars(state.moves,l.par))}<div class="win-reward">${state.reward?.amount?`<span class="coin-mark" aria-hidden="true">●</span> +${state.reward.amount} 金币`:'<span class="reward-claimed">本关奖励已领取</span>'}</div><div class="win-rating">${state.moves} 步 · 三星 ≤ ${l.par+2} 步 · 二星 ≤ ${l.par+6} 步</div><button class="primary" data-action="next">${index===levels.length-1?'选关':'下一关'} →</button><button class="secondary" data-action="replay">重玩</button>${index===levels.length-1?'<button class="finale-again" data-action="finale">再看小动画</button>':''}`;}
+  else if(dead){$('outcome').innerHTML=`<span class="outcome-icon" style="color:#d69b6b" aria-hidden="true">↶</span><h3>${l.barriers.length||l.portals.length?'换个走法试试':'需要调整顺序'}</h3><p>${l.barriers.length?'撤销上一步，挡板也会恢复。':'撤销上一步后继续。'}</p><button class="primary" data-action="undo">撤销这一步</button>`;}
+ }
+ function hint(){if(animating)return;const result=E.solve(level(),state);if(!result?.actions.length){note('当前路线走不通了。试着撤销几步，或者重新开始。',4500);return;}hintMove=result.actions[0];selected=hintMove[0];render();note(`试试让${colors[level().pieces[selected].color].name}块向${directions[hintMove[1]]}滑。`,4000);}
+ document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>move(Number(b.dataset.dir))));
+ $('undo').addEventListener('click',undo);$('reset').addEventListener('click',reset);$('hint').addEventListener('click',hint);
+ $('back-home').addEventListener('click',showHome);$('level-menu').addEventListener('click',showLevels);
+ $('start-game').addEventListener('click',start);
+ $('levels').addEventListener('click',e=>{const b=e.target.closest('[data-level]');if(b)requestLevel(Number(b.dataset.level));});
+ $('outcome').addEventListener('click',e=>{const a=e.target.dataset.action;if(a==='next'){if(index===levels.length-1)showLevels();else requestLevel(index+1);}if(a==='replay')reset();if(a==='undo')undo();if(a==='finale')finale();});
+ $('help').addEventListener('click',()=>window.StrokeGuide.open(screen==='game'?tutorialFor(index):'intro'));
+ $('sound').addEventListener('click',()=>{sound=!sound;$('sound').setAttribute('aria-label',sound?'关闭音效':'开启音效');$('sound').title=sound?'关闭音效':'开启音效';$('sound').classList.toggle('on',sound);tone();});
+ let gesture=null;
+ $('board').addEventListener('pointerdown',e=>{if(animating||E.won(level(),state)||needsUndo())return;const p=e.target.closest('[data-piece]');if(p)select(Number(p.dataset.piece));gesture={x:e.clientX,y:e.clientY,id:e.pointerId};$('board').setPointerCapture(e.pointerId);});
+ $('board').addEventListener('pointerup',e=>{if(!gesture||gesture.id!==e.pointerId)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;gesture=null;if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;move(Math.abs(dx)>Math.abs(dy)?dx>0?1:3:dy>0?2:0);});
+ $('board').addEventListener('pointercancel',()=>gesture=null);
+ document.addEventListener('keydown',e=>{
+  if(screen!=='game'||document.querySelector('dialog[open]')||e.altKey)return;
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo();return;}
+  if(e.ctrlKey||e.metaKey)return;
+  if(e.key==='1'||e.key==='2'){e.preventDefault();select(Number(e.key)-1);return;}
+  const d={ArrowUp:0,ArrowRight:1,ArrowDown:2,ArrowLeft:3,w:0,d:1,s:2,a:3}[e.key.length===1?e.key.toLowerCase():e.key];if(d!==undefined){e.preventDefault();move(d);return;}
+  if(e.key==='Tab'&&document.activeElement?.closest('#board')){e.preventDefault();const available=state.positions.map((p,i)=>p>=0?i:-1).filter(i=>i>=0);if(available.length){select(available[(available.indexOf(selected)+1)%available.length]);document.querySelector(`[data-piece="${selected}"]`)?.focus();}}
+  if((e.key==='Enter'||e.key===' ')&&e.target.closest('[data-piece]')){e.preventDefault();select(Number(e.target.closest('[data-piece]').dataset.piece));}
+ });
+ load(index);showHome();
+})();
+
+</script></body></html>
